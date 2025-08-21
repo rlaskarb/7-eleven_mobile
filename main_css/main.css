@@ -1,0 +1,61 @@
+/* index css */
+
+/* 비주얼 영역 */
+.visual {
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.visual .visual_swiper {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.visual_swiper .swiper-wrapper {
+    display: flex;
+}
+
+.visual_swiper .swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.visual_swiper li img {
+    width: 100%;
+    display: block;
+}
+
+.visual_swiper .swiper-slide p {
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 스와이퍼 기본테마 */
+.swiper {
+    width: 100%;
+    height: 500px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--font-color-main);
+}
+.visual_swiper .swiper-pagination-bullet {
+    background: #333;
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-pagination {
+    z-index: 200;
+}
