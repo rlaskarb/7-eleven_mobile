@@ -3,7 +3,12 @@ $(document).ready(function () {
         
         slidesPerView: 1,
         spaceBetween: 0,
-        freeMode: false,
+        loop: true,
+         
+        autoplay: {
+            delay: 5000, 
+            disableOnInteraction: false, 
+        },
 
         pagination: {
             el: ".visual_swiper .swiper-pagination",
@@ -14,5 +19,21 @@ $(document).ready(function () {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
         },
+
+
+        on: {
+            slideChangeTransitionStart: function () {
+                $('.visual_text dt, .visual_text dd').css({
+                    opacity: 0,
+                    transform: 'translateY(0px)'
+                });
+            },
+            slideChangeTransitionEnd: function () {
+                $('.swiper-slide-active .visual_text dt, .swiper-slide-active .visual_text dd').css({
+                    opacity: 1,
+                    transform: 'translateY(30px)'
+                });
+            }
+        }
     });
 });

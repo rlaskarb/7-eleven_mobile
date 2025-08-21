@@ -217,24 +217,34 @@ table {
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px;
+    height: 70px;
     z-index: 100;
     background: var(--font-color-sub2);
-    transform: background 0.5s ease-out;
+    transition: background 0.5s ease-out;
+}
+
+.header_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
 }
 
 #headerArea h1 a {
-    margin-top: 10px;
-    width: 107px;
-    height: 25px;
+    width: 171px;
+    height: 40px;
     overflow: hidden;
     text-indent: -999px;
-    background: url(../main_images/common/mobile_logo.png);
+    background: url(../main_images/common/mobile_logo.png) no-repeat;
+    background-size: contain;
+
 }
+
 
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
     #headerArea h1 a {
-        background: url(../main_images/common/mobile_logo_x2.png);
+        background-image: url(../main_images/common/mobile_logo_x2.png);
         /*여긴 두배이미지 넣기*/
     }
 }
@@ -245,66 +255,62 @@ table {
 
 /* 햄버거 메뉴바 생성 및 변신 */
 #headerArea .menu_ham {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: auto;
+    right: 15px;
+    margin-right: 10px;
     z-index: 201;
 }
 
 #headerArea .menu_ham span {
-    width: 25px;
-    height: 4px;
     background: var(--font-color-main);
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-indent: -9999px;
-    display: block;
-    margin: 30px 20px;
-    border-radius: 10px;
+    width: 25px;
+    height: 3px;
+    border-radius: 2px;
     transition: all 0.3s ease;
 }
 
+#headerArea .menu_ham span::after,
 #headerArea .menu_ham span::before {
     content: "";
     display: block;
     width: 25px;
-    height: 4px;
+    height: 3px;
     background: var(--font-color-main);
     position: absolute;
-    top: -8px;
     left: 0;
-    height: 4px;
-    border-radius: 10px;
+    border-radius: 2px;
     transition: all 0.3s ease;
+}
+
+#headerArea .menu_ham span::before {
+    top: -8px;
 }
 
 #headerArea .menu_ham span::after {
-    content: "";
-    display: block;
-    width: 25px;
-    height: 4px;
-    background: var(--font-color-main);
-    position: absolute;
     top: 8px;
-    left: 0;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-#headerArea.mn_open .menu_ham span::before,
-#headerArea.mn_open .menu_ham span::after {
-    background: var(--font-color-main);
 }
 
 #headerArea.mn_open .menu_ham span {
-    background: rgba(0, 0, 0, 0);
+    background: transparent;
 }
 
 #headerArea.mn_open .menu_ham span::before {
+    background: var(--font-color-main);
     transform: rotate(45deg);
     top: 0;
 }
 
 #headerArea.mn_open .menu_ham span::after {
+    background: var(--font-color-main);
     transform: rotate(-45deg);
     top: 0;
 }
@@ -315,9 +321,10 @@ table {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
 }
 
 
@@ -325,13 +332,14 @@ table {
 
 /* 네비 장착 */
 #gnb {
-    position: absolute;
+    position: fixed;
     width: 80%;
     height: 100vh;
     right: -100%;
     top: 0;
     opacity: 0;
-    background: var(--font-color-sub2);
+    background: #fff;
+    box-shadow: 1px 0 15px rgba(0, 0, 0, 0.1);
     transition: right 0.5s, opacity 0.5s;
     z-index: 200;
 }
@@ -343,48 +351,61 @@ table {
 
 #gnb>.main_menu {
     margin-top: 80px;
+    padding-bottom: 50px;
 }
 
 #gnb .main_menu li {
-    border-top: 1px solid var(--font-color-point1);
-    font-weight: bold;
     position: relative;
+    border-bottom: 1px solid #eee;
 }
 
 /* 1뎁스 사이즈크기 */
 #gnb .main_menu>li>h3>a {
-    display: block;
-    padding: 10px 30px;
-    font-size: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: all 0.5s;
 }
 
 #gnb .main_menu>li>h3>a>i {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 22px;
+    right: 40px;
+    color: #999;
     background: var(--font-color-sub2);
-    transition: transform 0.5s;
+    transition: transform 0.5s ease, color 0.5s ease;
 }
 
 
 /* 2뎁스 사이즈 크기 */
-#gnb li ul a {
-    font-size: 24px;
-    padding: 10px 30px;
+#gnb .main_menu li ul a {
+    font-size: 1.1rem;
+    padding: 15px 50px;
+    font-weight: 500;
 }
 
 /* 아코디언 */
 #gnb .main_menu ul {
     display: none;
-    background: var(--font-color-sub2);
+    background: #f8f8f8;
+    border-top: 1px solid #ddd;
 }
 
 #gnb .main_menu>li.active>ul {
     display: block;
 }
 
+#gnb .main_menu>li.active>h3>a {
+    color: var(--font-color-main);
+    font-weight: 700;
+}
+
 #gnb .main_menu>li.active>h3>a>i {
     transform: rotate(180deg);
+    color: var(--font-color-main);
 }
 
 
