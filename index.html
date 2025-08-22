@@ -6,6 +6,11 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0"
         />
+        <!-- 아이폰 링크 전번막기 -->
+        <meta
+            name="format-detection"
+            content="telephone=no"
+        />
         <title>7-ELEVEn</title>
 
         <link
@@ -259,15 +264,42 @@
                             <p>SNS 인증샷 필수템!</p>
                         </div>
 
-                        <ul class="honey_recipe_tuck_box"></ul>
+                        <div class="swiper honey_recipe_swiper">
+                            <div class="swiper-wrapper">
+                                <!--  -->
+                            </div>
+                        </div>
+                        <div class="honey_swiper_next">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </div>
                         <a
                             href="#"
                             class="more_btn honey_recipe_more"
                         >
                             <i class="fa-solid fa-plus"></i>
                         </a>
+                    </div>
+                </section>
 
-                        <i class="fa-solid fa-caret-right"></i>
+                <section class="new_product">
+                    <div class="new_product_container">
+                        <div class="new_product_title">
+                            <h3>이번 달 <strong>핫템</strong></h3>
+                            <p>SNS 인증샷 필수템!</p>
+                        </div>
+
+                        <div class="swiper new_product_swiper">
+                            <div class="swiper-wrapper">
+                                <!--  -->
+                            </div>
+                        </div>
+
+                        <a
+                            href="#"
+                            class="more_btn new_product_more"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                        </a>
                     </div>
                 </section>
 
@@ -277,11 +309,20 @@
             <footer id="footerArea">푸터영역</footer>
         </div>
 
+        <div class="main_modal_box">
+            <div class="main_popup_content">
+                <!-- -->
+            </div>
+        </div>
         <script src="./main_js/jquery-1.12.4.min.js"></script>
         <script src="./main_js/jquery-migrate-1.4.1.min.js"></script>
+        <!-- 수퍼베이스 라이브러리 연동! -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <!-- 스와이퍼 라이브러리 연동 -->
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script src="./main_js/index.js"></script>
         <script src="./main_js/nav.js"></script>
+        <script src="./main_js/honey_recipe.js"></script>
+        <script src="./main_js/new_product.js"></script>
     </body>
 </html>
