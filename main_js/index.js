@@ -1,13 +1,12 @@
 $(document).ready(function () {
     visualSwiper = new Swiper(".visual_swiper", {
-        
         slidesPerView: 1,
         spaceBetween: 0,
         loop: true,
-         
+
         autoplay: {
-            delay: 5000, 
-            disableOnInteraction: false, 
+            delay: 4000,
+            disableOnInteraction: false,
         },
 
         pagination: {
@@ -15,25 +14,19 @@ $(document).ready(function () {
             clickable: true,
         },
 
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-
-
         on: {
             slideChangeTransitionStart: function () {
-                $('.visual_text dt, .visual_text dd').css({
+                $(".visual_text dt, .visual_text dd").css({
                     opacity: 0,
-                    transform: 'translateY(0px)'
+                    transform: "translateY(30px)",
                 });
             },
             slideChangeTransitionEnd: function () {
-                $('.swiper-slide-active .visual_text dt, .swiper-slide-active .visual_text dd').css({
+                $(".swiper-slide-active .visual_text dt, .swiper-slide-active .visual_text dd").css({
                     opacity: 1,
-                    transform: 'translateY(30px)'
+                    transform: "translateY(10px)",
                 });
-            }
-        }
+            },
+        },
     });
 });

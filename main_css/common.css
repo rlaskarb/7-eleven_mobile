@@ -219,7 +219,7 @@ table {
     width: 100%;
     height: 70px;
     z-index: 100;
-    background: var(--font-color-sub2);
+    background: #fff;
     transition: background 0.5s ease-out;
 }
 
@@ -238,9 +238,7 @@ table {
     text-indent: -999px;
     background: url(../main_images/common/mobile_logo.png) no-repeat;
     background-size: contain;
-
 }
-
 
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
     #headerArea h1 a {
@@ -248,10 +246,6 @@ table {
         /*여긴 두배이미지 넣기*/
     }
 }
-
-
-
-
 
 /* 햄버거 메뉴바 생성 및 변신 */
 #headerArea .menu_ham {
@@ -327,9 +321,6 @@ table {
     z-index: 99;
 }
 
-
-
-
 /* 네비 장착 */
 #gnb {
     position: fixed;
@@ -349,7 +340,7 @@ table {
     opacity: 1;
 }
 
-#gnb>.main_menu {
+#gnb > .main_menu {
     margin-top: 80px;
     padding-bottom: 50px;
 }
@@ -360,7 +351,7 @@ table {
 }
 
 /* 1뎁스 사이즈크기 */
-#gnb .main_menu>li>h3>a {
+#gnb .main_menu > li > h3 > a {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -370,15 +361,14 @@ table {
     transition: all 0.5s ease;
 }
 
-#gnb .main_menu>li>h3>a>i {
+#gnb .main_menu > li > h3 > a > i {
     position: absolute;
     top: 22px;
     right: 40px;
     color: #999;
-    background: var(--font-color-sub2);
+    background: #fff;
     transition: transform 0.3s ease, color 0.3s ease;
 }
-
 
 /* 2뎁스 사이즈 크기 */
 #gnb .main_menu li ul a {
@@ -393,24 +383,42 @@ table {
     background: #f8f8f8;
     border-top: 1px solid #ddd;
     transition: all 0.5s ease;
-
 }
 
-#gnb .main_menu>li.active>ul {
+#gnb .main_menu > li.active > ul {
     display: block;
 }
 
-#gnb .main_menu>li.active>h3>a {
+#gnb .main_menu > li.active > h3 > a {
     color: var(--font-color-main);
     font-weight: 700;
 }
 
-#gnb .main_menu>li.active>h3>a>i {
+#gnb .main_menu > li.active > h3 > a > i {
     transform: rotate(180deg);
     color: var(--font-color-main);
 }
 
 
+/* sns */
+
+#gnb .header_sns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 43px;
+}
+
+/* 회원가입 */
+
+#gnb .login_menu {
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    gap: 20px;
+    font-size: 20px;
+}
 
 #content {
     height: 2000%;
