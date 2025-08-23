@@ -1,137 +1,90 @@
-$(document).ready(function () {
-	const newMenuData = [
-		{
-			image: "./sub2/images/content2/new1.jpg",
-			productName: "최강록의 리얼웨지감자 ",
-			company: "7-ELEVEn",
-			description: "강록솊의 진심을 담아 진공저온튀김 공법으로 만들었어요",
-			mdReview: "나야 감자..🥔",
-			price: "2,000원",
-		},
-		{
-			image: "./sub2/images/content2/new2.jpg",
-			productName: "밀키스 포도",
-			company: "LOTTE",
-			description: "부드러운 탄산에 진한 포도 풍미가 가득!",
-			mdReview: "자꾸만 생각나는 밀키스 포도맛🍇",
-			price: "2,200원",
-		},
-		{
-			image: "./sub2/images/content2/new3.jpg",
-			productName: "크림에 빠진 롤",
-			company: "7-ELEVEn",
-			description: "크림에 빠진 롤 삼총사! 납작복숭아 / 메론 / 얼그레이레몬롤 ",
-			mdReview: "한 번 빠지면 출구 없는 크림 롤!",
-			price: "3,300원",
-		},
-		{
-			image: "./sub2/images/content2/new4.jpg",
-			productName: "미노리키친 가츠동과 삼각김밥 ",
-			company: "7-ELEVEn",
-			description: "일본 가정식의 맛 그대로 미노리키친 푸드 시리즈",
-			mdReview: "오늘 한끼는 가츠동과 삼각김밥 어때요?",
-			price: "가츠동 5,800원 / 삼각 1,300원",
-		},
-		{
-			image: "./sub2/images/content2/new5.jpg",
-			productName: "롯샌 멜론",
-			company: "LOTTE",
-			description: "요즘 대세 인기 멜론 맛으로 역대급 멜론 과자",
-			mdReview: "🍈롯샌 멜론과 함께 멜론 코어에 탑승!",
-			price: "1,700원",
-		},
-		{
-			image: "./sub2/images/content2/new6.jpg",
-			productName: "부르봉블란츌 딸기 랑그드샤",
-			company: "7-ELEVEn",
-			description: "입에서 사르르 순삭하는 딸기 랑그드샤",
-			mdReview: " 딸기 랑그드샤..샤랑해…💕 ",
-			price: "3,000원",
-		},
-		{
-			image: "./sub2/images/content2/new7.jpg",
-			productName: "스윙칩고수타코맛 ",
-			company: "오리온",
-			description: "고수 입문자도, 고수 러버도 맛있게 즐길 수 있어요",
-			mdReview: "과연 나의 고수력 은?!🧐",
-			price: "1,700원",
-		},
-		{
-			image: "./sub2/images/content2/new8.jpg",
-			productName: "누룽지팝",
-			company: "농심",
-			description: "고소한 누룽지에 달달한 설탕이 솔솔~",
-			mdReview: "바삭한 식감이 살아있어요!🤩",
-			price: "3,600원",
-		},
-		{
-			image: "./sub2/images/content2/new9.jpg",
-			productName: "딸기이즘콘",
-			company: "LOTTE",
-			description: "본연의 딸기우유맛에 치즈다이스가 더해져 달콤하고 고소해요!",
-			mdReview: "딸기이즘콘 먹으러 세븐 갈 사람!",
-			price: "3,000원",
-		},
+// jQuery의 $(document).ready()와 동일한 역할을 합니다.
+$(function () {
 
-		{
-			image: "./sub2/images/content2/new10.jpg",
-			productName: "머그컵 카스테라볼 , 메이플 시럽 팬케익 ",
-			company: "7-ELEVEn",
-			description: "🤎카라멜 밀크크림과 🍯메이플시럽을 준비했어요",
-			mdReview: "달달한 간식은 사랑입니다. ",
-			price: "카스테라볼 3,400원 / 팬케익 2,800원 ",
-		},
-	];
+    // 1. Supabase 클라이언트 설정
+    const supabaseUrl = 'https://ozummxbytqiyzpljwbli.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96dW1teGJ5dHFpeXpwbGp3YmxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ2Njg5NTksImV4cCI6MjA3MDI0NDk1OX0.s7SmnNVrasiE52xZD1ALRXOUzWkwMcIrLzUkfe18aeo';
 
-	// 슬라이드 번호 저장변수
-	let currentIndex = 0;
-	let timer;
+    // ★★★ 바로 이 부분입니다! ★★★
+    // supabase 대신 supabaseClient 라는 새로운 변수 이름을 사용합니다.
+    const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-	// 특정번호 슬라이드 내용 화면에 보여주는 함수
+    /**
+     * Supabase에서 최신 상품 데이터를 가져와 Swiper 슬라이더를 만드는 비동기 함수
+     */
+    async function setupNewProductSlider() {
+        const $sliderWrapper = $('.new_product_swiper .swiper-wrapper');
 
-	function showSlide(index) {
-		const currentData = newMenuData[index];
-		const $contentWrapper = $(".new_menu_content_wrapper");
-		// 애니매이션이 진행중이면 또 실행되지 않도록 함.
-		if ($contentWrapper.is(":animated")) {
-			return;
-		}
+        // 위에서 만든 supabaseClient 변수를 사용합니다.
+        const { data: products, error } = await supabaseClient
+            .from('Product')
+            .select('FilePath, Name, Content1, Price')
+            .order('id', { ascending: false })
+            .limit(10);
 
-		$contentWrapper.animate({ opacity: 0, left: "-100px" }, 400, function () {
-			const newImg = new Image();
-			newImg.src = currentData.image;
+        if (error) {
+            console.error('Error fetching new products:', error);
+            $sliderWrapper.html('<li><p>상품을 불러오는 데 실패했습니다.</p></li>');
+            return;
+        }
 
-			// 이미지 로드가 완료되면 실행됨.
-			newImg.onload = function () {
-				// attr() 속성값을 가져오거나 변경할수 있는 함수.
-				$contentWrapper.find(".new_menu_right_box img").attr("src", newImg.src);
+        // 변수명을 products로 소문자로 통일합니다. (기존 Products -> products)
+        if (!products || products.length === 0) {
+            $sliderWrapper.html('<li><p>등록된 신상품이 없습니다.</p></li>');
+            return;
+        }
 
-				const $menuChange = $contentWrapper.find(".new_menu_change");
+        $sliderWrapper.empty();
 
-				$menuChange.find("dd").eq(0).text(currentData.productName);
-				$menuChange.find("dd").eq(1).text(currentData.company);
-				$menuChange.find("dd").eq(2).text(currentData.description);
-				$menuChange.find("dd").eq(3).find("span").text(currentData.mdReview);
-				$menuChange.find("dd").eq(4).find("span").text(currentData.price);
+        // 변수명을 product로 소문자로 통일합니다. (기존 Product -> product)
+        $.each(products, function (index, product) {
+            const productSlideHtml = `
+                <li class="swiper-slide">
+                    <dl>
+                        <dt>${product.Name}</dt>
+                        <dd>${product.Content1}</dd>
+                        <dd class="product_price">${product.Price.toLocaleString()}원</dd>
+                    </dl>
+                    <a href="#" class="product_image_link">
+                        <img src="${product.FilePath}" alt="${product.Name} 상품 이미지">
+                    </a>
+                </li>
+            `;
+            $sliderWrapper.append(productSlideHtml);
+        });
 
-				$contentWrapper.css("left", "100px");
-				$contentWrapper.animate({ opacity: 1, left: "0px" }, 400);
-			};
-		});
+        // 2. Swiper.js 초기화
+        new Swiper('.new_product_swiper', {
+            slidesPerView: 1.2,
+            spaceBetween: 15,
+            centeredSlides: true,
+            loop: true,
+            breakpoints: {
+                500: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                768: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 30
+                },
+                1024: {
+                    slidesPerView: 2.2,
+                    spaceBetween: 30
+                }
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    }
 
-	}
+    // 함수를 실행하여 전체 프로세스를 시작합니다.
+    setupNewProductSlider();
 
-
-	function startSlider() {
-		clearInterval(timer);
-		timer = setInterval(function () {
-			let nextIndex = (currentIndex + 1) % newMenuData.length;
-			showSlide(nextIndex);
-		}, 3000);
-	}
-
-	
-
-	showSlide(0);
-	startSlider();
 });
