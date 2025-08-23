@@ -40,7 +40,6 @@
     display: block;
 }
 
-/* 비주얼 텍스트 컨테이너 */
 .visual_text {
     position: absolute;
     top: 25%;
@@ -52,7 +51,7 @@
     width: 100%;
 }
 
-/* dt (제목) 스타일 */
+
 .visual_text dt {
     font-size: 2rem;
     font-weight: 700;
@@ -65,7 +64,7 @@
     transition: all 1.2s cubic-bezier(0.2, 0.6, 0.4, 1);
 }
 
-/* dd (설명) 스타일 */
+
 .visual_text dd {
     font-size: 1.3rem;
     font-weight: 400;
@@ -76,7 +75,7 @@
     transition: all 1.2s 0.8s cubic-bezier(0.2, 0.6, 0.4, 1);
 }
 
-/* 활성화된 슬라이드 텍스트 애니메이션 */
+
 .swiper-slide-active .visual_text dt,
 .swiper-slide-active .visual_text dd {
     opacity: 1;
@@ -89,14 +88,12 @@
     height: auto;
 }
 
-/* 페이지네이션 버튼 */
 .visual_swiper .swiper-pagination-bullet {
     background: #333;
     opacity: 0.5;
     transition: all 0.5s ease;
 }
 
-/* 활성화된 페이지네이션 버튼 */
 .visual_swiper .swiper-pagination-bullet-active {
     background: var(--font-color-main);
     width: 20px;
@@ -104,17 +101,12 @@
     opacity: 1;
 }
 
-.swiper-button-next,
-.swiper-button-prev,
-.swiper-pagination {
-    z-index: 200;
-}
+
 
 /* ------------------------------------------- */
 
 /* MZ픽 레시피 */
 
-/* MZ픽 레시피 전체 컨테이너 */
 #content .honey_recipe {
     width: 85%;
     position: relative;
@@ -123,14 +115,13 @@
 
 #content .honey_recipe_container {
     width: 100%;
-    max-width: 640px; /* 모바일 최대 너비 */
-    margin: 0 auto;
     height: 100%;
+    margin: 0 auto;
     position: relative;
     overflow: visible;
 }
 
-/* 제목 영역 */
+
 #content .honey_recipe_title {
     text-align: left;
     margin-bottom: 40px;
@@ -161,16 +152,19 @@
     line-height: 1.6rem;
 }
 
-/* 스와이퍼 컨테이너 */
+
 #content .honey_recipe_swiper {
     width: 100%;
     overflow: hidden;
 }
 
-/* 개별 슬라이드 */
 #content .honey_recipe_swiper .swiper-slide {
     width: 100%;
     height: auto;
+    display: flex;
+    border-radius: 15px;
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
 /* 다음으로 이동하는 화살표 */
@@ -181,14 +175,11 @@
     font-size: 60px;
     padding: 30px;
     font-weight: bold;
+    cursor: pointer;
     color: var(--font-color-point1);
-    z-index: 1000;
+    z-index: 99;
 }
 
-/* 레시피 카드 */
-#content .recipe_card {
-    position: relative;
-}
 
 /* 이미지 박스 */
 #content .recipe_img_box {
@@ -202,8 +193,10 @@
     width: 100%;
     height: 100%;
     border-radius: 0 15px 15px 0;
-    object-fit: cover; /* 비율 유지하며 가득 채움 */
-    object-position: center; /* 중앙 기준으로 자름 */
+    object-fit: cover;
+    /* 비율 유지하며 가득 채움 */
+    object-position: center;
+    /* 중앙 기준으로 자름 */
     transition: transform 0.3s ease;
 }
 
@@ -257,89 +250,125 @@
     right: 0;
 }
 
+
+/* ---------------------------------------------- */
 /* 이달의 핫템 */
-.new_product {
-    box-sizing: border-box;
-    padding: 20px 10px;
-    background-color: #fdfdfd;
-}
-
-.new_product_swiper .swiper-wrapper {
-    align-items: stretch; /* li들이 같은 높이를 갖도록 */
-}
-
-.new_product_swiper .swiper-slide { /* li 태그 */
-    display: flex;
-    flex-direction: column; /* 모바일 기본: 세로 쌓기 */
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    overflow: hidden; /* 자식 요소가 부모를 벗어나지 않도록 */
-    height: auto; /* 컨텐츠 높이에 맞춰 자동 조절 */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-/* 텍스트 영역 (dl) */
-.new_product_swiper dl {
-    padding: 15px;
-    margin: 0;
-    order: 2; /* 모바일에서 텍스트가 이미지 아래로 */
-    flex-grow: 1; /* 남는 공간을 모두 차지 */
-    display: flex;
-    flex-direction: column;
-}
-
-.new_product_swiper dt {
-    font-size: 1.1em; /* em은 부모 폰트 크기에 비례 */
-    font-weight: 700;
-    color: #333;
-}
-
-.new_product_swiper dd {
-    margin: 0;
-    font-size: 0.9em;
-    color: #666;
-    line-height: 1.5;
-    flex-grow: 1; /* 내용이 짧아도 공간을 채움 */
-    padding: 8px 0;
-}
-
-.new_product_swiper .product_price {
-    font-size: 1.2em;
-    font-weight: 700;
-    color: #d92027;
-    align-self: flex-start; /* 가격은 항상 아래에 위치 */
-}
-
-/* 이미지 영역 (a 태그) */
-.new_product_swiper .product_image_link {
-    display: block;
-    order: 1; /* 모바일에서 이미지가 위로 */
+#content .new_product {
     width: 100%;
-    aspect-ratio: 4 / 3; /* 이미지 비율을 4:3으로 유지 */
+    position: relative;
+    padding-bottom: 50px;
+    background: linear-gradient(to bottom, #fff, var(--font-color-sub1));
 }
 
-.new_product_swiper .product_image_link img {
+#content .new_product_container {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 이미지가 잘리지 않고 꽉 차도록 */
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
 }
 
-/* 500px 이상 데스크탑 레이아웃 (왼쪽 텍스트, 오른쪽 이미지) */
-@media (min-width: 500px) {
-    .new_product_swiper .swiper-slide {
-        flex-direction: row; /* 가로 배치 */
-    }
 
-    .new_product_swiper dl {
-        order: 1; /* 텍스트가 왼쪽으로 */
-        width: 55%;
-        padding: 20px;
-    }
+#content .new_product_title {
+    text-align: left;
+    margin-bottom: 40px;
+    position: relative;
+}
 
-    .new_product_swiper .product_image_link {
-        order: 2; /* 이미지가 오른쪽으로 */
-        width: 45%;
-        aspect-ratio: 1 / 1; /* 1:1 비율로 변경 */
-    }
+#content .new_product_title h3 {
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    position: relative;
+}
+
+#content .new_product_title h3::before {
+    content: "";
+    width: 80px;
+    height: 13px;
+    background: var(--font-color-main);
+    position: absolute;
+    top: 40px;
+    left: 130px;
+    z-index: -10;
+}
+
+#content .new_product_title p {
+    font-size: 20px;
+    color: #666;
+    line-height: 1.6rem;
+}
+
+#content .new_product_swiper {
+    width: 100%;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+#content .new_product_swiper .swiper-slide {
+    width: 100%;
+    height: auto;
+
+}
+
+#content .new_product_swiper .product_image_link {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+#content .new_product_swiper .product_image_link img {
+    width: 100%;
+    object-fit: cover;
+}
+
+#content .new_product_swiper .product_info {
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+#content .new_product_swiper .product_info dt {
+    margin: 10px;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--font-color-main);
+}
+
+#content .new_product_swiper .product_info dd {
+    margin: 10px 20px;
+    color: #666;
+    min-height: 30px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+#content .new_product_swiper .product_info dd:nth-of-type(2) {
+    color: var(--font-color-point2);
+    text-align: right;
+    margin-right: 30px;
+}
+
+#content .new_product_swiper .swiper-slide-active .product_info {
+    opacity: 1;
+}
+
+#content .new_product_swiper .swiper-pagination {
+    width: auto;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.new_product_swiper .swiper-pagination-bullet {
+    background: #333;
+    opacity: 0.5;
+    transition: all 0.5s ease;
+}
+
+.new_product_swiper .swiper-pagination-bullet-active {
+    background: var(--font-color-point2);
+    opacity: 1;
 }

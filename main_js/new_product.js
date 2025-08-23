@@ -5,8 +5,7 @@ $(function () {
     const supabaseUrl = 'https://ozummxbytqiyzpljwbli.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96dW1teGJ5dHFpeXpwbGp3YmxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ2Njg5NTksImV4cCI6MjA3MDI0NDk1OX0.s7SmnNVrasiE52xZD1ALRXOUzWkwMcIrLzUkfe18aeo';
 
-    // ★★★ 바로 이 부분입니다! ★★★
-    // supabase 대신 supabaseClient 라는 새로운 변수 이름을 사용합니다.
+    
     const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
     /**
@@ -38,16 +37,28 @@ $(function () {
 
         // 변수명을 product로 소문자로 통일합니다. (기존 Product -> product)
         $.each(products, function (index, product) {
+
+             // 내용 자르기 (모바일에서는 더 짧게)
+                const truncatedContent =
+                    product.Content1.length > 50 ? product.Content1.substring(0, 50) + "..." : product.Content1;
+
+                // 제목 자르기
+                const truncatedTitle = product.Name.length > 12 ? product.Name.substring(0, 12) + "..." : product.Name;
+
+
             const productSlideHtml = `
                 <li class="swiper-slide">
-                    <dl>
-                        <dt>${product.Name}</dt>
-                        <dd>${product.Content1}</dd>
-                        <dd class="product_price">${product.Price.toLocaleString()}원</dd>
-                    </dl>
+
                     <a href="#" class="product_image_link">
                         <img src="${product.FilePath}" alt="${product.Name} 상품 이미지">
                     </a>
+
+                    <dl class="product_info">
+                        <dt>${truncatedTitle}</dt>
+                        <dd>${truncatedContent}</dd>
+                        <dd class="product_price">가격 : ${product.Price.toLocaleString()}원</dd>
+                    </dl>
+                    
                 </li>
             `;
             $sliderWrapper.append(productSlideHtml);
@@ -56,31 +67,15 @@ $(function () {
         // 2. Swiper.js 초기화
         new Swiper('.new_product_swiper', {
             slidesPerView: 1.2,
-            spaceBetween: 15,
+            spaceBetween: 10,
             centeredSlides: true,
             loop: true,
-            breakpoints: {
-                500: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                768: {
-                    slidesPerView: 1.5,
-                    spaceBetween: 30
-                },
-                1024: {
-                    slidesPerView: 2.2,
-                    spaceBetween: 30
-                }
-            },
+         
             pagination: {
-                el: '.swiper-pagination',
+                el:'.new_product_swiper .swiper-pagination',
                 clickable: true,
             },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+          
         });
     }
 

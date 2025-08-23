@@ -70,7 +70,7 @@ $(document).ready(function () {
 
                 // 내용 자르기 (모바일에서는 더 짧게)
                 const truncatedContent =
-                    post.content.length > 40 ? post.content.substring(0, 40) + "..." : post.content;
+                    post.content.length > 28 ? post.content.substring(0, 28) + "..." : post.content;
 
                 // 제목 자르기
                 const truncatedTitle = post.title.length > 10 ? post.title.substring(0, 10) + "..." : post.title;
