@@ -1,8 +1,8 @@
 /* index css */
 /* 더보기 버튼 공통 */
 #content .more_btn {
-    width: 46px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
     background: var(--font-color-main);
     color: #fff;
     border-radius: 50%;
@@ -247,7 +247,7 @@
 #content .honey_recipe_more {
     position: absolute;
     top: 10px;
-    right: 0;
+    right: -10%;
 }
 
 
@@ -257,7 +257,9 @@
     width: 100%;
     position: relative;
     padding-bottom: 50px;
+
     background: linear-gradient(to bottom, #fff, var(--font-color-sub1));
+    box-shadow: 1px 2px 20px rgba(240, 240, 242, 0.6);
 }
 
 #content .new_product_container {
@@ -273,6 +275,7 @@
     text-align: left;
     margin-bottom: 40px;
     position: relative;
+
 }
 
 #content .new_product_title h3 {
@@ -280,7 +283,10 @@
     margin-bottom: 15px;
     font-weight: 600;
     position: relative;
+    z-index: 1;
+
 }
+
 
 #content .new_product_title h3::before {
     content: "";
@@ -371,4 +377,10 @@
 .new_product_swiper .swiper-pagination-bullet-active {
     background: var(--font-color-point2);
     opacity: 1;
+}
+
+#content .new_product_more {
+    position: absolute;
+    top: 10px;
+    right: 5%;
 }

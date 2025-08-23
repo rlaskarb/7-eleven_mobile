@@ -66,10 +66,15 @@ $(function () {
 
         // 2. Swiper.js 초기화
         new Swiper('.new_product_swiper', {
-            slidesPerView: 1.2,
-            spaceBetween: 10,
+            slidesPerView: 1.15,
+            spaceBetween: 7,
             centeredSlides: true,
             loop: true,
+
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false, // 사용자가 터치해도 자동재생 계속
+            },
          
             pagination: {
                 el:'.new_product_swiper .swiper-pagination',
