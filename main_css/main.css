@@ -471,6 +471,8 @@
 
 #content .start_up_guide .guide_image img {
     width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 #content .guide .start_up_guide_more {
@@ -485,15 +487,182 @@
     right: 5%;
 }
 
-.start_up_guide_swiper .swiper-pagination-bullet {
+.start_up_guide_swiper .swiper-pagination-bullet,
+.eleven_story_swiper .swiper-pagination-bullet {
     background: var(--font-color-point2);
     opacity: 0.5;
     transition: all 0.5s ease;
 }
 
-.start_up_guide_swiper .swiper-pagination-bullet-active {
+.start_up_guide_swiper .swiper-pagination-bullet-active,
+.eleven_story_swiper .swiper-pagination-bullet-active {
     background: var(--font-color-main);
     width: 20px;
     border-radius: 10px;
     opacity: 1;
+}
+
+/* --------------------------------------------- */
+/* 세븐일레븐 스토리 */
+
+#content .eleven_story {
+    width: 100%;
+    position: relative;
+    margin: 50px auto;
+}
+
+#content .eleven_story_container {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: visible;
+}
+
+.start_up_guide_swiper {
+    width: auto;
+    position: relative;
+    overflow: visible;
+}
+
+#content .eleven_story_title {
+    text-align: left;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+#content .eleven_story_title h3 {
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+#content .eleven_story_title h3::before {
+    content: "";
+    width: 195px;
+    height: 13px;
+    background: var(--font-color-main);
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: -10;
+}
+
+#content .eleven_story_title p {
+    font-size: 20px;
+    color: #666;
+    line-height: 1.6rem;
+}
+
+#content .eleven_story_content ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1%;
+}
+
+#content .eleven_story_content li {
+    width: 27%;
+
+    margin-bottom: 10px;
+}
+
+#content .eleven_story_content li img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#content .eleven_story_more {
+    position: absolute;
+    top: 15px;
+    right: 5%;
+}
+
+/* 모달창 */
+.main_modal_box {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 250;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.main_modal_box.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.main_popup_content {
+    width: 85%;
+    max-width: 400px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.main_modal_box.active .main_popup_content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.main_popup_content .fa-triangle-exclamation {
+    font-size: 40px;
+    color: var(--font-color-point1);
+    margin-bottom: 15px;
+}
+
+.main_popup_content p {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--font-color-point2);
+}
+
+.main_popup_content .buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.main_popup_content .buttons a {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.modal_close {
+    color: var(--font-color-main);
+    border: none;
+    background: none;
+    margin-left: 90%;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.buttons .youtube {
+    color: var(--font-color-main);
+}
+
+.buttons .story {
+    color: var(--font-color-point1);
 }

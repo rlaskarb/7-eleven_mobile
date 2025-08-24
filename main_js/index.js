@@ -36,14 +36,11 @@ $(document).ready(function () {
         spaceBetween: 0,
         loop: true,
 
-        // autoplay: {
-        //     delay: 3500,
-        //     disableOnInteraction: false,
-        // },
-
         pagination: {
             el: ".start_up_guide_swiper .swiper-pagination",
             clickable: true,
         },
     });
+
+    
 });
