@@ -313,10 +313,10 @@ table {
 #headerArea .blind_box {
     display: none;
     position: fixed;
-    top: 0;
+    top: 70px;
     left: 0;
     width: 100%;
-    height: calc(100%- 70px);
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 99;
 }
@@ -325,13 +325,17 @@ table {
 #gnb {
     position: fixed;
     width: 80%;
-    height: calc(100vh - 70px);
+    height: auto;
+    max-height: calc(100vh - 110px);
     right: -100%;
-    top: 70px;
+    top: 85px;
     opacity: 0;
     background: #fff;
-    transition: right 0.3s, opacity 0.3s;
+    transition: right 0.5s, opacity 0.5s;
     z-index: 200;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+   
 }
 
 #headerArea.mn_open #gnb {
@@ -339,7 +343,7 @@ table {
     opacity: 1;
 }
 
-#gnb>.main_menu {
+#gnb > .main_menu {
     margin-top: 10px;
     padding-bottom: 50px;
 }
@@ -350,7 +354,7 @@ table {
 }
 
 /* 1뎁스 사이즈크기 */
-#gnb .main_menu>li>h3>a {
+#gnb .main_menu > li > h3 > a {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -360,13 +364,13 @@ table {
     transition: all 0.5s ease;
 }
 
-#gnb .main_menu>li>h3>a>i {
+#gnb .main_menu > li > h3 > a > i {
     position: absolute;
     top: 22px;
     right: 40px;
     color: #999;
     background: #fff;
-    transition: transform 0.4s ease, color 0.4s ease;
+    transition: transform 0.4s ease-in, color 0.4s ease;
 }
 
 /* 2뎁스 사이즈 크기 */
@@ -383,25 +387,23 @@ table {
     overflow: hidden;
     background: #f8f8f8;
     border-top: 1px solid #ddd;
-    transition: max-height 0.4s ease-out,
-        opacity 0.4s ease-out;
+    transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
 }
 
-#gnb .main_menu>li.active>ul {
+#gnb .main_menu > li.active > ul {
     max-height: 500px;
     opacity: 1;
 }
 
-#gnb .main_menu>li.active>h3>a {
+#gnb .main_menu > li.active > h3 > a {
     color: var(--font-color-main);
     font-weight: 700;
 }
 
-#gnb .main_menu>li.active>h3>a>i {
+#gnb .main_menu > li.active > h3 > a > i {
     transform: rotate(180deg);
     color: var(--font-color-main);
 }
-
 
 /* sns */
 
@@ -421,6 +423,5 @@ table {
     margin: 20px 30px;
     font-size: 20px;
 }
-
 
 /* 푸터공통 */

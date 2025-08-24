@@ -13,8 +13,9 @@ $(document).ready(function () {
             $blindBox.show();
             $gnb.css("height", window.innerHeight + "px");
         } else {
-            $("body").css("overflow", "hidden"); // 닫을때 복구
+            $("body").css("overflow", "auto"); // 닫을때 복구
             $blindBox.hide();
+            $("#gnb .main_menu li").removeClass("active");
         }
     });
 

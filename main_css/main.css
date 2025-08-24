@@ -51,7 +51,6 @@
     width: 100%;
 }
 
-
 .visual_text dt {
     font-size: 2rem;
     font-weight: 700;
@@ -64,7 +63,6 @@
     transition: all 1.2s cubic-bezier(0.2, 0.6, 0.4, 1);
 }
 
-
 .visual_text dd {
     font-size: 1.3rem;
     font-weight: 400;
@@ -74,7 +72,6 @@
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     transition: all 1.2s 0.8s cubic-bezier(0.2, 0.6, 0.4, 1);
 }
-
 
 .swiper-slide-active .visual_text dt,
 .swiper-slide-active .visual_text dd {
@@ -89,7 +86,9 @@
 }
 
 .visual_swiper .swiper-pagination-bullet {
-    background: #333;
+    background: var(--font-color-point2);
+    width: 11px;
+    height: 11px;
     opacity: 0.5;
     transition: all 0.5s ease;
 }
@@ -100,8 +99,6 @@
     border-radius: 10px;
     opacity: 1;
 }
-
-
 
 /* ------------------------------------------- */
 
@@ -120,7 +117,6 @@
     position: relative;
     overflow: visible;
 }
-
 
 #content .honey_recipe_title {
     text-align: left;
@@ -152,7 +148,6 @@
     line-height: 1.6rem;
 }
 
-
 #content .honey_recipe_swiper {
     width: 100%;
     overflow: hidden;
@@ -179,7 +174,6 @@
     color: var(--font-color-point1);
     z-index: 99;
 }
-
 
 /* 이미지 박스 */
 #content .recipe_img_box {
@@ -250,7 +244,6 @@
     right: -10%;
 }
 
-
 /* ---------------------------------------------- */
 /* 이달의 핫템 */
 #content .new_product {
@@ -270,12 +263,10 @@
     overflow: visible;
 }
 
-
 #content .new_product_title {
     text-align: left;
     margin-bottom: 40px;
     position: relative;
-
 }
 
 #content .new_product_title h3 {
@@ -284,9 +275,7 @@
     font-weight: 600;
     position: relative;
     z-index: 1;
-
 }
-
 
 #content .new_product_title h3::before {
     content: "";
@@ -314,7 +303,6 @@
 #content .new_product_swiper .swiper-slide {
     width: 100%;
     height: auto;
-
 }
 
 #content .new_product_swiper .product_image_link {
@@ -348,7 +336,6 @@
     font-weight: 600;
 }
 
-
 #content .new_product_swiper .product_info dd:nth-of-type(2) {
     color: var(--font-color-point2);
     text-align: right;
@@ -365,17 +352,20 @@
     bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
-
 }
 
 .new_product_swiper .swiper-pagination-bullet {
-    background: #333;
+    background: var(--font-color-point2);
+    width: 11px;
+    height: 11px;
     opacity: 0.5;
     transition: all 0.5s ease;
 }
 
 .new_product_swiper .swiper-pagination-bullet-active {
-    background: var(--font-color-point2);
+    background: var(--font-color-main);
+    width: 20px;
+    border-radius: 10px;
     opacity: 1;
 }
 
