@@ -29,4 +29,21 @@ $(document).ready(function () {
             },
         },
     });
+
+    // 창업안내 스와이퍼
+    visualSwiper = new Swiper(".start_up_guide_swiper", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+
+        // autoplay: {
+        //     delay: 3500,
+        //     disableOnInteraction: false,
+        // },
+
+        pagination: {
+            el: ".start_up_guide_swiper .swiper-pagination",
+            clickable: true,
+        },
+    });
 });

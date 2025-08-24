@@ -107,7 +107,7 @@
 #content .honey_recipe {
     width: 85%;
     position: relative;
-    padding-bottom: 50px;
+    padding: 50px 0;
 }
 
 #content .honey_recipe_container {
@@ -249,8 +249,7 @@
 #content .new_product {
     width: 100%;
     position: relative;
-    padding-bottom: 50px;
-
+    padding: 50px 0;
     background: linear-gradient(to bottom, #fff, var(--font-color-sub1));
     box-shadow: 1px 2px 20px rgba(240, 240, 242, 0.6);
 }
@@ -259,6 +258,12 @@
     width: 100%;
     height: 100%;
     margin: 0 auto;
+    position: relative;
+    overflow: visible;
+}
+
+.start_up_guide_swiper {
+    width: auto;
     position: relative;
     overflow: visible;
 }
@@ -356,8 +361,6 @@
 
 .new_product_swiper .swiper-pagination-bullet {
     background: var(--font-color-point2);
-    width: 11px;
-    height: 11px;
     opacity: 0.5;
     transition: all 0.5s ease;
 }
@@ -373,4 +376,124 @@
     position: absolute;
     top: 10px;
     right: 5%;
+}
+
+/* ------------------------------------------- */
+/* 창업 설명 */
+
+#content .start_up_guide {
+    width: 100%;
+    position: relative;
+    padding: 50px 0;
+    background: linear-gradient(to bottom, var(--font-color-sub2), #fff);
+    box-shadow: 1px 2px 20px rgba(240, 240, 242, 0.6);
+}
+
+#content .start_up_guide_container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+}
+
+#content .guide_text {
+    text-align: left;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+#content .guide_text h3,
+#content .guide_text h4 {
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+#content .guide_content h3::before {
+    content: "";
+    width: 160px;
+    height: 13px;
+    background: var(--font-color-main);
+    position: absolute;
+    top: 95px;
+    left: 0;
+    z-index: -10;
+}
+
+#content .point_content h4::before {
+    content: "";
+    width: 250px;
+    height: 13px;
+    background: var(--font-color-main);
+    position: absolute;
+    top: 95px;
+    left: 0;
+    z-index: -10;
+}
+
+#content .consultation_content h4::before {
+    content: "";
+    width: 110px;
+    height: 13px;
+    background: var(--font-color-main);
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: -10;
+}
+
+#content .session_content h4::before {
+    content: "";
+    width: 193px;
+    height: 13px;
+    background: var(--font-color-main);
+    position: absolute;
+    top: 95px;
+    left: 0;
+    z-index: -10;
+}
+
+#content .guide_text p {
+    font-size: 20px;
+    color: #666;
+    line-height: 2.3rem;
+    padding-left: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#content .start_up_guide .guide_image {
+    width: 100%;
+}
+
+#content .start_up_guide .guide_image img {
+    width: 100%;
+}
+
+#content .guide .start_up_guide_more {
+    position: absolute;
+    top: 65px;
+    right: 5%;
+}
+
+#content .start_up_guide_more {
+    position: absolute;
+    top: 15px;
+    right: 5%;
+}
+
+.start_up_guide_swiper .swiper-pagination-bullet {
+    background: var(--font-color-point2);
+    opacity: 0.5;
+    transition: all 0.5s ease;
+}
+
+.start_up_guide_swiper .swiper-pagination-bullet-active {
+    background: var(--font-color-main);
+    width: 20px;
+    border-radius: 10px;
+    opacity: 1;
 }
