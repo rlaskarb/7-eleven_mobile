@@ -70,19 +70,19 @@
 #content .title_area {
     width: 100%;
     margin: 0 auto;
-    padding-bottom: 180px;
+    padding-bottom: 160px;
     position: relative;
 }
 
 #content .title_area h2 {
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 40px;
+    font-weight: 600;
     text-align: center;
     margin-bottom: 10px;
 }
 
 #content .title_area p {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     color: #999;
     text-align: center;
@@ -97,6 +97,8 @@
     transform: translateX(-50%);
     display: block;
     width: 4px;
-    height: 80px;
+    height: 100px;
+    box-shadow: 1px 1px 20px rgba();
+    border-radius: 10px;
     background: var(--font-color-main);
 }
