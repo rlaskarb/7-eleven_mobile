@@ -441,7 +441,7 @@ table {
 #footerArea .footer_inner img {
     width: 45%;
     max-width: 200px;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 }
 
 #footerArea .footer_inner address {
@@ -450,7 +450,7 @@ table {
     line-height: 1rem;
 }
 #footerArea .footer_inner address p {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 #footerArea .footer_inner .copy {
