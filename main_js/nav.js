@@ -11,7 +11,8 @@ $(document).ready(function () {
         if ($header.hasClass("mn_open")) {
             $("body").css("overflow", "hidden"); // 메뉴 열릴때 스크롤 막기
             $blindBox.show();
-            $gnb.css("height", window.innerHeight + "px");
+            $gnb.css("height", window.innerHeight - 70 + "px");
+            $(".top_move").removeClass("show");
         } else {
             $("body").css("overflow", "auto"); // 닫을때 복구
             $blindBox.hide();
