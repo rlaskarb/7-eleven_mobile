@@ -7,7 +7,6 @@ $(document).ready(function () {
     const $global_p = $(".global_seven_title p");
     const $shorts_h3 = $(".eleven_shorts_title h3");
     const $shorts_p = $(".eleven_shorts_title p");
-    //const $shortSlides = $(".eleven_shorts_content .swiper-slide");
     const $shorts_img = $(".eleven_shorts_content .swiper-wrapper");
     let check = false;
 

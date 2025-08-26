@@ -64,14 +64,23 @@ $(function () {
 
         // 2. Swiper.js 초기화
         new Swiper(".new_product_swiper", {
-            slidesPerView: 1.15,
-            spaceBetween: 7,
+            
+            speed: 850,
+            effect: "coverflow",
             centeredSlides: true,
+            slidesPerView: "auto",
             loop: true,
+            coverflowEffect: {
+                rotate: 50, // 각도
+                stretch: 0, //간격
+                depth: 100, // 3D 깊이감
+                modifier: 1, // 배수
+                slideShadows: true,
+            },
 
             autoplay: {
-                delay: 3500,
-                disableOnInteraction: false, // 사용자가 터치해도 자동재생 계속
+                delay: 3000,
+                disableOnInteraction: false, 
             },
 
             pagination: {

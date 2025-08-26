@@ -32,6 +32,13 @@ $(document).ready(function () {
 
     // 창업안내 스와이퍼
     visualSwiper = new Swiper(".start_up_guide_swiper", {
+        effect: "cube",
+        cubeEffect: {
+            shadow: true,
+            slideShadows: true,
+            shadowOffset: 20,
+            shadowScale: 0.94,
+        },
         slidesPerView: 1,
         spaceBetween: 0,
         loop: true,
