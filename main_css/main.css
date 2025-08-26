@@ -1,4 +1,5 @@
 /* index css */
+
 /* 더보기 버튼 공통 */
 #content .more_btn {
     width: 40px;
@@ -59,8 +60,8 @@
     margin-bottom: 20px;
     opacity: 0;
     transform: translateY(30px);
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    transition: all 1.2s cubic-bezier(0.2, 0.6, 0.4, 1);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 1s ease-in;
 }
 
 .visual_text dd {
@@ -69,17 +70,16 @@
     line-height: 2rem;
     opacity: 0;
     transform: translateY(30px);
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    transition: all 1.2s 0.8s cubic-bezier(0.2, 0.6, 0.4, 1);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 1.2s ease-in;
 }
 
 .swiper-slide-active .visual_text dt,
 .swiper-slide-active .visual_text dd {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(5px);
 }
 
-/* 스와이퍼 기본테마 */
 .swiper {
     width: 100%;
     height: auto;
@@ -160,9 +160,7 @@
 #content .honey_recipe_swiper .swiper-slide {
     width: 100%;
     height: auto;
-    display: flex;
     border-radius: 15px;
-    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
@@ -171,7 +169,7 @@
     position: absolute;
     top: 35%;
     right: -80px;
-    font-size: 60px;
+    font-size: 50px;
     padding: 30px;
     font-weight: bold;
     cursor: pointer;
@@ -182,18 +180,16 @@
 /* 이미지 박스 */
 #content .recipe_img_box {
     width: 100%;
-    height: auto;
     overflow: hidden;
     position: relative;
 }
 
 #content .recipe_img_box img {
     width: 100%;
-    height: 100%;
     border-radius: 0 15px 15px 0;
     object-fit: cover;
     object-position: center;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 /* 레시피 정보 영역 */
@@ -536,7 +532,7 @@
 }
 
 #content .eleven_story_title h3 {
-    font-size: 40px;
+    font-size: 38px;
     margin-bottom: 15px;
     font-weight: 600;
     position: relative;
@@ -545,7 +541,7 @@
 
 #content .eleven_story_title h3::before {
     content: "";
-    width: 195px;
+    width: 180px;
     height: 13px;
     background: var(--font-color-main);
     position: absolute;
@@ -555,7 +551,7 @@
 }
 
 #content .eleven_story_title p {
-    font-size: 20px;
+    font-size: 18px;
     color: #666;
     line-height: 1.6rem;
 }
@@ -581,13 +577,6 @@
     border-radius: 10px;
 }
 
-#content .eleven_story_more {
-    position: absolute;
-    top: 15px;
-    right: 5%;
-    z-index: 50;
-}
-
 /* 모달창 */
 .main_modal_box {
     display: none;
@@ -596,10 +585,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.75);
     z-index: 250;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.5s ease-out;
 }
 .main_modal_box.active {
     display: flex;
@@ -610,19 +599,20 @@
 
 .main_popup_content {
     width: 85%;
-    max-width: 400px;
-    padding: 30px;
+    max-width: 380px;
     background: #fff;
+    border: 2px solid var(--font-color-main);
     border-radius: 20px;
+    padding: 0 10px;
     text-align: center;
     box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(20px);
     opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
+    transition: all 0.5s ease;
 }
 
 .main_modal_box.active .main_popup_content {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
 }
 
@@ -633,10 +623,11 @@
 }
 
 .main_popup_content p {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 30px;
+    color: #333;
 }
 
 .main_popup_content .buttons {
@@ -645,7 +636,7 @@
 
 .main_popup_content .buttons a {
     flex: 1;
-    padding: 5px;
+    padding: 20px 0;
     border-radius: 10px;
     font-size: 20px;
     font-weight: 700;
@@ -653,12 +644,22 @@
 }
 
 .modal_close {
-    color: var(--font-color-main);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #999;
     border: none;
-    background: none;
-    margin-left: 90%;
-    font-size: 20px;
+    background: rgba(0, 0, 0, 0.05);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .buttons .youtube {

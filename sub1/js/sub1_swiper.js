@@ -1,3 +1,5 @@
+let youtubeUrl = "";
+
 $(document).ready(function () {
     visualSwiper = new Swiper(".eleven_shorts_content", {
         slidesPerView: 2,
@@ -22,7 +24,7 @@ $(document).ready(function () {
         loop: true,
 
         autoplay: {
-            delay: 3000,
+            delay: 2500,
             disableOnInteraction: false,
         },
 
@@ -30,19 +32,26 @@ $(document).ready(function () {
             el: ".eleven_shorts_content .swiper-pagination",
             clickable: true,
         },
+    });
 
-        breakpoints: {
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-                centeredSlides: true,
-            },
+    $(".swiper-slide a").click(function (e) {
+        e.preventDefault();
+        youtubeUrl = $(this).data("url");
+        $("#youtube_modal").show();
+    });
 
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 15,
-                centeredSlides: true,
-            },
-        },
+    $(".seven_modal").click(function (e) {
+        if (e.target === this) {
+            closeModal();
+        }
     });
 });
+
+function closeModal() {
+    $("#youtube_modal").hide();
+}
+
+function goYoutube() {
+    window.open(youtubeUrl, "_blank");
+    closeModal();
+}
