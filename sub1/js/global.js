@@ -3,8 +3,11 @@ $(document).ready(function () {
     const $img = $expansion.find("img");
     const $text1 = $expansion.find(".global_text1");
     const $text2 = $expansion.find(".global_text2");
-    const $title_h3 = $(".global_seven_title h3");
-    const $title_p = $(".global_seven_title p");
+    const $global_h3 = $(".global_seven_title h3");
+    const $global_p = $(".global_seven_title p");
+    const $shorts_h3 = $(".eleven_shorts_title h3");
+    const $shorts_p = $(".eleven_shorts_title p");
+    const $shorts_img = $(".eleven_shorts_content .swiper-wrapper");
     let check = false;
 
     $(window).on("scroll", function () {
@@ -19,11 +22,11 @@ $(document).ready(function () {
             check = true;
 
             setTimeout(function () {
-                $title_h3.addClass("active");
+                $global_h3.addClass("active");
             }, 500);
 
             setTimeout(function () {
-                $title_p.addClass("active");
+                $global_p.addClass("active");
             }, 1000);
 
             setTimeout(function () {
@@ -37,6 +40,18 @@ $(document).ready(function () {
             setTimeout(function () {
                 $text2.addClass("active");
             }, 2500);
+
+            setTimeout(function () {
+                $shorts_h3.addClass("active");
+            }, 3500);
+
+            setTimeout(function () {
+                $shorts_p.addClass("active");
+            }, 4000);
+
+            setTimeout(function () {
+                $shorts_img.addClass("active");
+            }, 4500);
         }
     });
 });

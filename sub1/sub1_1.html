@@ -32,10 +32,6 @@
             rel="stylesheet"
             href="../main_css/common.css"
         />
-        <link
-            rel="stylesheet"
-            href="../main_css/main.css"
-        />
 
         <link
             rel="stylesheet"
@@ -45,6 +41,12 @@
         <link
             rel="stylesheet"
             href="./css/sub1_1.css"
+        />
+
+        <!-- 스와이퍼 css -->
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper/swiper-bundle.min.css"
         />
 
         <!-- Noto Sans Korean , Roboto 폰트링크 -->
@@ -92,7 +94,7 @@
         <div id="wrap">
             <header id="headerArea">
                 <div class="header_top">
-                    <h1><a href="../main_images/common/mobile_logo_x2.png">로고</a></h1>
+                    <h1><a href="../index.html">로고</a></h1>
                     <a
                         href="#"
                         class="menu_ham"
@@ -114,9 +116,9 @@
                             </h3>
 
                             <ul>
-                                <li><a href="#">브랜드 스토리</a></li>
-                                <li><a href="#">경영 스토리</a></li>
-                                <li><a href="#">회사 연혁</a></li>
+                                <li><a href="./sub1_1.html">브랜드 스토리</a></li>
+                                <li><a href="./sub1_2.html">경영 스토리</a></li>
+                                <li><a href="./sub1_3.html">회사 연혁</a></li>
                             </ul>
                         </li>
 
@@ -234,11 +236,10 @@
                 <div class="content_area">
                     <div class="global_content">
                         <div class="global_seven_title">
-                            <h3>세계 속의 세븐 일레븐</h3>
+                            <h3>세계 1위 세븐일레븐</h3>
                             <p>
-                                1927년 미국 텍사스 작은 얼음공장에서 <br />
-                                시작해, 독창적인 콜드체인 시스템으로 <br />
-                                신선식품 유통에혁신을 가져왔습니다.
+                                1927년 작은 얼음공장에서 시작해 <br />
+                                전 세계 편의점 혁신을 이끈 레전드! 🌍
                             </p>
                         </div>
                         <figure class="global_expansion">
@@ -255,6 +256,82 @@
                                 </p>
                             </figcaption>
                         </figure>
+                    </div>
+
+                    <div class="eleven_shorts_content swiper">
+                        <div class="eleven_shorts_title">
+                            <h3>세븐 리얼 스토리</h3>
+                            <p>1등 매장의 비밀부터 신상 뒷이야기까지! 🔥</p>
+                        </div>
+
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a
+                                    href="#"
+                                    data-url="https://youtube.com/shorts/j2QzGiZjDlo"
+                                >
+                                    <img
+                                        src="../main_images/main/7elevenstory1.jpg"
+                                        alt="도쿠시마라면홍보 유튜브숏츠 이미지"
+                                    />
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a
+                                    href="#"
+                                    data-url="https://youtube.com/shorts/CK7PNGvnfsc"
+                                >
+                                    <img
+                                        src="../main_images/main/7elevenstory2.jpg"
+                                        alt="선화예고 탐방기 유튜브숏츠 이미지"
+                                    />
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a
+                                    href="#"
+                                    data-url="https://youtube.com/shorts/53kFjsy1tuY"
+                                >
+                                    <img
+                                        src="../main_images/main/7elevenstory3.jpg"
+                                        alt="요하볼 세븐일레븐출시 홍보영상 이미지"
+                                    />
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a
+                                    href="#"
+                                    data-url="https://youtube.com/shorts/PZGEOkNYUAw"
+                                >
+                                    <img
+                                        src="../main_images/main/7elevenstory4.jpg"
+                                        alt="한도초과 가성비도시락 이미지"
+                                    />
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a
+                                    href="#"
+                                    data-url="https://youtube.com/shorts/yYB7UHckHec"
+                                >
+                                    <img
+                                        src="../main_images/main/7elevenstory5.jpg"
+                                        alt="앙라마티스와인볼 쇼비뇽블랑 이미지"
+                                    />
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a
+                                    href="#"
+                                    data-url="https://youtube.com/shorts/p6UYyhOYf0w"
+                                >
+                                    <img
+                                        src="../main_images/main/7elevenstory6.jpg"
+                                        alt="전남친샌드 이미지"
+                                    />
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -311,9 +388,12 @@
 
         <script src="../main_js/jquery-1.12.4.min.js"></script>
         <script src="../main_js/jquery-migrate-1.4.1.min.js"></script>
+        <!-- 스와이퍼 라이브러리 연동 -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script src="../main_js/nav.js"></script>
         <script src="../main_js/sub_nav.js"></script>
         <script src="../main_js/top_button.js"></script>
         <script src="./js/global.js"></script>
+        <script src="./js/sub1_swiper.js"></script>
     </body>
 </html>
