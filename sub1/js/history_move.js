@@ -31,7 +31,7 @@ $(document).ready(function () {
                     if (entry.isIntersecting) {
                         const targetId = "#" + $(entry.target).attr("id");
                         $navLinks.parent().removeClass("on");
-                        $navLinks.filter(`[data-target="${targetId}"]`).parent().addClass("on");
+                        $navLinks.filter(`[href="${targetId}"]`).parent().addClass("on");
                     }
                 });
             },
