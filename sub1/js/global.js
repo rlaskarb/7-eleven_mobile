@@ -23,35 +23,35 @@ $(document).ready(function () {
 
             setTimeout(function () {
                 $global_h3.addClass("active");
-            }, 500);
+            }, 200);
 
             setTimeout(function () {
                 $global_p.addClass("active");
-            }, 1000);
+            }, 500);
 
             setTimeout(function () {
                 $img.addClass("active");
-            }, 1500);
+            }, 700);
 
             setTimeout(function () {
                 $text1.addClass("active");
-            }, 2000);
+            }, 1200);
 
             setTimeout(function () {
                 $text2.addClass("active");
-            }, 2500);
+            }, 1700);
 
             setTimeout(function () {
                 $shorts_h3.addClass("active");
-            }, 3500);
+            }, 2000);
 
             setTimeout(function () {
                 $shorts_p.addClass("active");
-            }, 4000);
+            }, 2300);
 
             setTimeout(function () {
                 $shorts_img.addClass("active");
-            }, 4500);
+            }, 2800);
         }
     });
 });
