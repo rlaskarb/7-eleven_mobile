@@ -1,55 +1,59 @@
-$(document).ready(function () {
-    const $header = $("#headerArea");
-    const $historyNav = $(".history_nav");
-    const $navLinks = $historyNav.find("a");
-    const navHeight = $historyNav.outerHeight();
+let smh = $(".history_nav").offset().top - 70;
+let hnav_h = $(".history_nav").height() + 130;
+const history_2020 = Math.floor($(".company_history>div:eq(0)").offset().top - hnav_h);
+const history_2010 = Math.floor($(".company_history>div:eq(1)").offset().top - hnav_h);
+const history_2000 = Math.floor($(".company_history>div:eq(2)").offset().top - hnav_h);
+const history_1990 = Math.floor($(".company_history>div:eq(3)").offset().top - hnav_h + 5);
+const history_1980 = Math.floor($(".company_history>div:eq(4)").offset().top - hnav_h);
+console.log(hnav_h, history_2020, history_2010, history_2000, history_1990, history_1980);
 
-    const $stickyTrigger = $(".sticky_trigger");
+$(window).on("scroll", function () {
+    var scroll = $(window).scrollTop();
+  
 
-    if ($stickyTrigger.length > 0) {
-        const stickyObserver = new IntersectionObserver(
-            function (entries) {
-                const entry = entries[0];
-                if (!entry.isIntersecting) {
-                    $header.hide();
-                    $historyNav.addClass("fixed");
-                } else {
-                    $header.show();
-                    $historyNav.removeClass("fixed");
-                }
-            },
-            { threshold: 0 }
-        ); // 1px라도 사라지면 실행!
-        stickyObserver.observe($stickyTrigger[0]);
+    
+    if (scroll > smh) {
+        $(".history_nav").addClass("fixed");
+       
+        $("header").hide();
+    } else {
+        $(".history_nav").removeClass("fixed");
+        
+        $("header").show();
     }
-    //  스크롤 스파이는 또 뭐여 옵져버 실어하는데
-    const $historySections = $(".history_decade");
-    if ($historySections.length > 0) {
-        const scrollspyObserver = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        const targetId = "#" + $(entry.target).attr("id");
-                        $navLinks.parent().removeClass("on");
-                        $navLinks.filter(`[href="${targetId}"]`).parent().addClass("on");
-                    }
-                });
-            },
-            // 화면 중앙 (50%)을 기준으로 , 위 아래 40% 영역에 들와왔을때를 감지????????
-            { rootMargin: "-40% 0px -60% 0px", threshold: 0 }
-        );
-        $historySections.each(function () {
-            scrollspyObserver.observe(this);
-        });
+
+    $(".history_nav li").removeClass("on");
+
+    if (scroll >= history_2020 && scroll < history_2010) {
+        $(".history_nav li:eq(0)").addClass("on");
+    } else if (scroll >= history_2010 && scroll < history_2000) {
+        $(".history_nav li:eq(1)").addClass("on");
+    } else if (scroll >= history_2000 && scroll < history_1990) {
+        $(".history_nav li:eq(2)").addClass("on");
+    } else if (scroll >= history_1990 && scroll < history_1980) {
+        $(".history_nav li:eq(3)").addClass("on");
+    } else if (scroll >= history_1980) {
+        $(".history_nav li:eq(4)").addClass("on");
     }
-    //  클릭시 부드럽게 이동
-    $navLinks.on("click", function (event) {
-        event.preventDefault();
-        const targetSelector = $(this).attr("href");
-        const $targetElement = $(targetSelector);
-        if ($targetElement.length) {
-            const offsetPosition = $targetElement.offset().top - navHeight - 50;
-            $("html , body").animate({ scrollTop: offsetPosition }, 500);
-        }
-    });
+});
+
+$(".history_nav li a").click(function (e) {
+    e.preventDefault();
+
+    let value = 0;
+
+    if ($(this).hasClass("link1")) {
+        value = history_2020;
+    } else if ($(this).hasClass("link2")) {
+        value = history_2010;
+    } else if ($(this).hasClass("link3")) {
+        value = history_2000;
+    } else if ($(this).hasClass("link4")) {
+        value = history_1990;
+    } else if ($(this).hasClass("link5")) {
+        value = history_1980;
+    }
+
+    console.log(value);
+    $("html,body").stop().animate({ scrollTop: value }, 1000);
 });

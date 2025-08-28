@@ -1,0 +1,25 @@
+#content .content_area {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+#content h3,
+#content h3 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#content p,
+#content p {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
