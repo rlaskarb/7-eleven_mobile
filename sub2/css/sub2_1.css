@@ -24,26 +24,15 @@
     gap: 10px;
 }
 
-#content .coffee_roasting h4,
-#content .coffee_bean h4 {
-    font-size: 20px;
-    color: var(--font-color-point2);
-    font-weight: 600;
-}
-#content .coffee_roasting p,
-#content .coffee_bean p {
-    font-size: 14px;
-    color: #666;
-    font-weight: 600;
-}
-
 #content .beans_img {
     width: 80%;
     margin-bottom: 40px;
+
 }
 
 #content .beans_img img {
     width: 100%;
+    border-radius: 20px;
 }
 
 #content .seven_beans_note {
@@ -53,64 +42,75 @@
 /* 제목 섹션 */
 .title-section {
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), #8b4513;
-    color: white;
+    font-weight: bold;
     padding: 40px 20px;
     border-radius: 10px;
-    margin-bottom: 40px;
+    margin: 120px 0 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+
 }
 
-.title-section h2 {
+.title-section h3 {
     font-size: 24px;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.title-section p {
+#content .coffee_roasting p,
+#content .coffee_bean p,
+#content .title-section p {
     font-size: 14px;
+    line-height: 1.8rem;
 }
 
-/* 커피 섹션 */
+
 .coffee-section {
     margin-bottom: 40px;
 }
 
-.coffee-section h3 {
+#content .coffee_roasting h4,
+#content .coffee_bean h4,
+#content .coffee-section h4 {
+    width: 80%;
+    margin: 20px auto;
     text-align: center;
     font-size: 22px;
-    color: #e77e2d;
-    margin-bottom: 20px;
+    color: var(--font-color-point1);
     padding: 15px;
-    background: white;
+    background: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 카드 스타일 */
+
 .coffee-card {
-    background: white;
+    width: 90%;
+    background: #fff;
     padding: 20px;
     margin-bottom: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.coffee-card h4 {
+.coffee-card strong {
+    display: block;
     font-size: 18px;
-    color: #e77e2d;
+    color: var(--font-color-point1);
     margin-bottom: 15px;
     border-bottom: 2px solid #f0f0f0;
     padding-bottom: 10px;
 }
 
-/* Tasting Note */
+
 .taste-note {
     font-size: 16px;
     color: #666;
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.5rem;
 }
 
-/* 블렌딩 */
+
 .blend-item {
     display: flex;
     align-items: center;
@@ -135,69 +135,35 @@
 
 /* 아로마 태그 */
 .aroma-tags {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
 .tag {
-    padding: 8px 15px;
-    border: 2px solid #e77e2d;
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 2px solid var(--font-color-point1);
     border-radius: 20px;
-    font-size: 14px;
     background: white;
-    color: #e77e2d;
+    color: var(--font-color-point1);
 }
 
 .tag.active {
-    background: #e77e2d;
+    background: var(--font-color-point1);
     color: white;
 }
 
 /* 이미지 */
 .coffee-image {
+    width: 100%;
     text-align: center;
 }
 
 .coffee-image img {
     width: 100%;
-    max-width: 300px;
+    object-fit: cover;
+    background-position: center;
     border-radius: 10px;
-}
-
-/* 모바일 */
-@media (max-width: 768px) {
-    body {
-        padding: 15px;
-    }
-
-    .title-section {
-        padding: 30px 15px;
-    }
-
-    .title-section h2 {
-        font-size: 20px;
-    }
-
-    .coffee-section h3 {
-        font-size: 18px;
-    }
-
-    .coffee-card {
-        padding: 15px;
-    }
-
-    .coffee-card h4 {
-        font-size: 16px;
-    }
-
-    .blend-item img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .tag {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
 }
