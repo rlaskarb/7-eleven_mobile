@@ -60,7 +60,8 @@
 #content .coffee_roasting p,
 #content .coffee_bean p,
 #content .title-section p {
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: 500;
     line-height: 1.8rem;
 }
 

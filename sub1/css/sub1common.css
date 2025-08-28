@@ -76,14 +76,14 @@
 
 #content .title_area h2 {
     font-size: 36px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
     margin-bottom: 10px;
 }
 
 #content .title_area p {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
     color: #999;
     text-align: center;
     position: relative;
