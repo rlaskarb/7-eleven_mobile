@@ -42,9 +42,7 @@ $(function () {
             const slideHtml = `
                 <li class="swiper-slide" data-id="${product.id}">
                     <img src="${product.FilePath}" alt="${product.Name} 상품 이미지" />
-                    <dl>
-                        <dt>${product.Name}</dt>
-                    </dl>
+                    <p>${product.Name}</p>         
                 </li>
             `;
             $sliderWrapper.append(slideHtml);
@@ -59,10 +57,7 @@ $(function () {
                 delay: 3000,
                 disableOnInteraction: false,
             },
-            navigation: {
-                nextEl: ".banner_slider_arrows .next",
-                prevEl: ".banner_slider_arrows .prev",
-            },
+        
         });
 
         // 배너 팝업 기능 설정 함수 호출

@@ -61,9 +61,7 @@ $(function () {
             const slideHtml = `
                 <li class="swiper-slide" data-id="${product.id}">
                     <img src="${product.FilePath}" alt="${product.Name} 상품 이미지" />
-                    <dl>
-                        <dt>${product.Name}</dt>
-                    </dl>
+                    <p>${product.Name}</p>                    
                 </li>
             `;
             // 만들어진 HTML을 슬라이더 wrapper에 추가합니다.
