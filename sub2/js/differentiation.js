@@ -1,11 +1,5 @@
-// jQuery의 $(function() { ... })는 HTML 문서가 모두 로드된 후 코드를 실행하라는 의미입니다.
-// 자바스크립트 코드가 HTML 요소보다 먼저 실행되어 발생하는 오류를 방지하는 중요한 역할을 합니다.
 $(function () {
-    // --- Supabase 클라이언트 설정: 데이터베이스와 통신하기 위한 접속 정보를 설정합니다. ---
-
-    // supabaseUrl: 각자의 Supabase 프로젝트마다 부여되는 고유한 주소입니다.
     const supabaseUrl = "https://ozummxbytqiyzpljwbli.supabase.co";
-    // supabaseKey: 프로젝트에 접근하기 위한 인증키입니다. 웹사이트에 공개되는 키는 보통 anon key로, 보안 규칙에 따라 제한된 접근만 가능합니다.
     const supabaseKey =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96dW1teGJ5dHFpeXpwbGp3YmxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ2Njg5NTksImV4cCI6MjA3MDI0NDk1OX0.s7SmnNVrasiE52xZD1ALRXOUzWkwMcIrLzUkfe18aeo";
     // supabase.createClient 함수를 사용해 Supabase 통신을 위한 클라이언트 객체를 생성합니다.
@@ -28,7 +22,7 @@ $(function () {
         currentFilter = filter; // 현재 필터 상태를 업데이트합니다.
 
         const $productList = $(".new_product_list");
-        $productList.html("<p>상품을 불러오는 중입니다...</p>"); // 데이터를 불러오기 전, 사용자에게 로딩 중임을 알려줍니다.
+        $productList.html("<p>상품을 불러오는 중입니다...</p>");
 
         // --- 페이지네이션을 위한 데이터 범위 계산 ---
         // 예: 1페이지 -> 0-7, 2페이지 -> 8-15
@@ -39,8 +33,10 @@ $(function () {
         // let으로 쿼리 변수를 선언하는 이유: 필터 조건에 따라 쿼리가 계속 변경(추가)될 수 있기 때문입니다.
         let query = supabaseClient
             .from("Product") // 'Product' 테이블에서 조회합니다.
-            .select("id, Name, FilePath, Price, Content1, Content2, Content3, Flavor", { count: "exact" }) // 필요한 모든 컬럼과 함께, 필터링된 데이터의 전체 개수(count)를 함께 요청합니다.
-            .eq("Category", "차별화") // ★★★ 이 페이지의 핵심! 'Category'가 '차별화'인 상품만 필터링합니다. ★★★
+            .select("id, Name, FilePath, Price, Content1, Content2, Content3, Flavor ,Category ,Menu", {
+                count: "exact",
+            }) // 필요한 모든 컬럼과 함께, 필터링된 데이터의 전체 개수(count)를 함께 요청합니다.
+            .eq("Category", "차별화") //  'Category'가 '차별화'인 상품만 필터링합니다.
             .order("id", { ascending: false }); // 최신 상품이 먼저 오도록 정렬합니다.
 
         // --- 추가 필터 조건 적용 ---
@@ -183,14 +179,19 @@ $(function () {
             if (!productData) return;
 
             const modalHtml = `
-                <a href="#" class="close_pop">x</a>
+                <a href="#" class="close_pop"><i class="fa-solid fa-x"></i></a>
                 <div class="modal_content_wrapper">
                     <img src="${productData.FilePath}" alt="${productData.Name}">
                     <h3>${productData.Name}</h3>
-                    <p>${productData.Content1 || ''}</p>
-                    <p>${productData.Content2 || ''}</p>
-                    <p>${productData.Content3 || ''}</p>
-                    ${productData.Flavor ? `<span class="flavor-tag">#${productData.Flavor}</span>` : ''}
+                    <p>${productData.Content1 || ""}</p>
+                    <p>${productData.Content2 || ""}</p>
+                    <p>${productData.Content3 || ""}</p>
+                    <div class="menu_box">
+                    ${productData.Flavor ? `<span class="flavor-tag">#${productData.Flavor}</span>` : ""}
+                    ${productData.Category ? `<span class="flavor-tag">#${productData.Category}</span>` : ""}
+                    ${productData.Menu ? `<span class="flavor-tag">#${productData.Menu}</span>` : ""}
+                    </div>
+                    
                 </div>
             `;
 

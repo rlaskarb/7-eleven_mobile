@@ -26,7 +26,9 @@ $(function () {
 
         let query = supabaseClient
             .from("Product")
-            .select("id, Name, FilePath, Price, Content1, Content2, Content3, Flavor", { count: "exact" })
+            .select("id, Name, FilePath, Price, Content1, Content2, Content3, Flavor ,Category ,Menu", {
+                count: "exact",
+            })
             .eq("Category", "신상")
             .order("id", { ascending: false });
 
@@ -159,14 +161,18 @@ $(function () {
 
             // 모달 내용 구성
             const modalHtml = `
-                <a href="#" class="close_pop">x</a>
+                <a href="#" class="close_pop"><i class="fa-solid fa-x"></i></a>
                 <div class="modal_content_wrapper">
                     <img src="${productData.FilePath}" alt="${productData.Name}">
                     <h3>${productData.Name}</h3>
-                    <p>${productData.Content1 || ''}</p>
-                    <p>${productData.Content2 || ''}</p>
-                    <p>${productData.Content3 || ''}</p>
-                    ${productData.Flavor ? `<span class="flavor-tag">#${productData.Flavor}</span>` : ''}
+                    <p>${productData.Content1 || ""}</p>
+                    <p>${productData.Content2 || ""}</p>
+                    <p>${productData.Content3 || ""}</p>
+                    <div class="menu_box">
+                    ${productData.Flavor ? `<span class="flavor-tag">#${productData.Flavor}</span>` : ""}
+                    ${productData.Category ? `<span class="flavor-tag">#${productData.Category}</span>` : ""}
+                    ${productData.Menu ? `<span class="flavor-tag">#${productData.Menu}</span>` : ""}
+                    </div>
                 </div>
             `;
 

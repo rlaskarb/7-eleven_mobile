@@ -1,6 +1,6 @@
 #content .content_area {
     width: 100%;
-    margin: 50px auto;
+    margin: 30px auto;
     position: relative;
 }
 
@@ -35,8 +35,6 @@
     font-weight: 600;
     border-radius: 10px;
 }
-
-
 
 #content .fresh_food_inquiry {
     width: 100%;
@@ -89,7 +87,7 @@
 #content .new_banner_container h3 {
     text-align: center;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 38px;
     color: rgba(217, 38, 41, 0.8);
     margin-bottom: 10px;
 }
@@ -124,7 +122,6 @@
     font-size: 14px;
     font-weight: 500;
 }
-
 
 #content .new_product_list {
     width: 100%;
@@ -249,7 +246,7 @@
 }
 
 .new_popup_con li img {
-    width: 500px;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -287,7 +284,7 @@
 }
 
 .new_popup_con .modal_content_wrapper .flavor-tag {
-    display: inline-block;
+    display: block;
     padding: 5px 15px;
     background-color: var(--font-color-point2);
     color: #fff;
@@ -296,18 +293,20 @@
     margin-top: 10px;
 }
 
-.close_pop {
-    position: absolute;
-    top: 50px;
-    right: 60px;
-
-    transition: all 0.3s ease;
+.new_popup_con .modal_content_wrapper .menu_box {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 
-.close_pop i {
+#content .new_popup_con .close_pop {
+    position: absolute;
+    top: 20px;
+    right: 42px;
+    font-size: 26px;
     color: rgba(217, 38, 41, 0.8);
     font-weight: 700;
-    font-size: var(--font-size-no11);
+    transition: all 0.3s ease;
 }
 
 /*상품없음*/
@@ -323,7 +322,7 @@
     object-fit: contain;
 }
 
-.no_result_container>div {
+.no_result_container > div {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -331,7 +330,7 @@
     font-weight: 500;
 }
 
-.no_result_container>div a {
+.no_result_container > div a {
     width: 200px;
     text-align: center;
     margin-top: 10px;
@@ -343,7 +342,7 @@
     transition: all 0.3s ease;
 }
 
-.no_result_container>div a:hover {
+.no_result_container > div a:hover {
     background: rgba(217, 38, 41, 0.8);
     transform: translateY(-4px);
     box-shadow: 1px 1px 15px rgba(217, 38, 41, 0.3);

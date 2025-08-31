@@ -17,7 +17,7 @@ $(function () {
         // 팝업창에 필요한 모든 정보를 함께 요청합니다.
         const { data: products, error } = await supabaseClient
             .from("Product")
-            .select("id, Name, FilePath, Content1, Content2, Content3, Flavor")
+            .select("id, Name, FilePath, Content1, Content2, Content3, Flavor,Category ,Menu")
             .eq("Category", "신상")
             .order("id", { ascending: false })
             .limit(6);
@@ -57,7 +57,6 @@ $(function () {
                 delay: 3000,
                 disableOnInteraction: false,
             },
-        
         });
 
         // 배너 팝업 기능 설정 함수 호출
@@ -81,14 +80,18 @@ $(function () {
 
             // 모달 내용 구성 (닫기 버튼 포함)
             const modalHtml = `
-                <a href="#" class="close_pop">x</a>
+                <a href="#" class="close_pop"><i class="fa-solid fa-x"></i></a>
                 <div class="modal_content_wrapper">
                     <img src="${productData.FilePath}" alt="${productData.Name}">
                     <h3>${productData.Name}</h3>
-                    <p>${productData.Content1 || ''}</p>
-                    <p>${productData.Content2 || ''}</p>
-                    <p>${productData.Content3 || ''}</p>
-                    ${productData.Flavor ? `<span class="flavor-tag">#${productData.Flavor}</span>` : ''}
+                    <p>${productData.Content1 || ""}</p>
+                    <p>${productData.Content2 || ""}</p>
+                    <p>${productData.Content3 || ""}</p>
+                       <div class="menu_box">
+                    ${productData.Flavor ? `<span class="flavor-tag">#${productData.Flavor}</span>` : ""}
+                    ${productData.Category ? `<span class="flavor-tag">#${productData.Category}</span>` : ""}
+                    ${productData.Menu ? `<span class="flavor-tag">#${productData.Menu}</span>` : ""}
+                    </div>
                 </div>
             `;
 

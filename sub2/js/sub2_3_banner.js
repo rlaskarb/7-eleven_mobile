@@ -29,7 +29,7 @@ $(function () {
         // await 키워드: 비동기 작업(데이터 요청)이 완료될 때까지 기다리라는 명령어입니다.
         const { data: products, error } = await supabaseClient
             .from("Product") // 'Product' 테이블에서 데이터를 조회합니다.
-            .select("id, Name, FilePath, Content1, Content2, Content3, Flavor") // 필요한 모든 컬럼(열)을 선택합니다.
+            .select("id, Name, FilePath, Content1, Content2, Content3, Flavor ,Category ,Menu") // 필요한 모든 컬럼(열)을 선택합니다.
             .eq("Category", "차별화") // 'Category'가 '차별화'인 상품만 필터링합니다.
             .order("id", { ascending: false }) // 최신 상품이 먼저 오도록 id를 기준으로 내림차순 정렬합니다.
             .limit(6); // 최대 6개의 데이터만 가져옵니다.
@@ -74,11 +74,13 @@ $(function () {
             slidesPerView: 2, // 한 화면에 보여줄 슬라이드 개수
             spaceBetween: 15, // 슬라이드 사이의 여백 (px)
             loop: true, // 무한 반복 여부
-            autoplay: { // 자동 재생 설정
+            autoplay: {
+                // 자동 재생 설정
                 delay: 3000, // 3초마다 다음 슬라이드로 이동
                 disableOnInteraction: false, // 사용자가 조작한 후에도 자동 재생 계속
             },
-            navigation: { // 좌우 화살표 버튼 설정
+            navigation: {
+                // 좌우 화살표 버튼 설정
                 nextEl: ".banner_slider_arrows .next",
                 prevEl: ".banner_slider_arrows .prev",
             },
@@ -111,14 +113,18 @@ $(function () {
 
             // --- 팝업창에 들어갈 HTML 동적 생성 ---
             const modalHtml = `
-                <a href="#" class="close_pop">x</a>
+                <a href="#" class="close_pop"><i class="fa-solid fa-x"></i></a>
                 <div class="modal_content_wrapper">
                     <img src="${productData.FilePath}" alt="${productData.Name}">
                     <h3>${productData.Name}</h3>
-                    <p>${productData.Content1 || ''}</p>
-                    <p>${productData.Content2 || ''}</p>
-                    <p>${productData.Content3 || ''}</p>
-                    ${productData.Flavor ? `<span class="flavor-tag">#${productData.Flavor}</span>` : ''}
+                    <p>${productData.Content1 || ""}</p>
+                    <p>${productData.Content2 || ""}</p>
+                    <p>${productData.Content3 || ""}</p>
+                     <div class="menu_box">
+                    ${productData.Flavor ? `<span class="flavor-tag">#${productData.Flavor}</span>` : ""}
+                    ${productData.Category ? `<span class="flavor-tag">#${productData.Category}</span>` : ""}
+                    ${productData.Menu ? `<span class="flavor-tag">#${productData.Menu}</span>` : ""}
+                    </div
                 </div>
             `;
 
