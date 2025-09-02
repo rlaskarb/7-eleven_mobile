@@ -58,7 +58,7 @@ $(document).ready(function () {
         }
 
         posts.forEach(function (post) {
-            const imageUrl = post.filePath || "../sub2/images/content2/ddddd.png";
+            const imageUrl = post.filePath || "../sub2/images/content2/ddddd.jpg";
             const displayDate = post.created_at.substring(0, 10);
 
             // 내용이 너무 길면 자르기
@@ -71,19 +71,19 @@ $(document).ready(function () {
             const postHtml = `
                         <li>
                             <a href="#" class="edit-trigger" data-post-id="${post.id}" >
-                              <div class="recipe_img">
-                                <img src="${imageUrl}" alt="${post.title} 이미지" loading="lazy">
-                              </div>
-															<div class="recipe_content">
-                              	<dl>
-                                	<dt>${truncatedTitle}</dt>
-                                	<dd>${truncatedContent}</dd>
-																	<dd>${post.name}</dd>	
-                              	</dl>
-																<div class="recipe_info">
-																	<span class="recipe_date">${displayDate}</span>	
-																</div>
-															</div>
+                                <div class="recipe_img">
+                                    <img src="${imageUrl}" alt="${post.title} 이미지" loading="lazy">
+                                </div>
+							    <div class="recipe_content">
+                              	    <dl>
+                                	    <dt>${truncatedTitle}</dt>
+                                	    <dd>${truncatedContent}</dd>
+									    <dd>${post.name}</dd>	
+                              	    </dl>
+								    <div class="recipe_info">
+									    <span class="recipe_date">${displayDate}</span>	
+								    </div>
+							    </div>
                             </a>
                         </li>
                     `;
@@ -193,45 +193,43 @@ $(document).ready(function () {
             return;
         }
 
-        const imageUrl = post.filePath || "../sub2/images/content2/ddddd.png";
+        const imageUrl = post.filePath || "../sub2/images/content2/ddddd.jpg";
 
         // 📌 수정/삭제 버튼이 포함된 모달 HTML
         const postHtml = `
-			     			<ul>
-                   <li> 
-                    	<div class="recipe_img_edit">
-                        	<img src="${imageUrl}" alt="${post.title} 이미지">
-                        	<p>※ 이미지 수정은 현재 지원되지 않습니다.</p>
-                    	</div>
+		<ul>
+            <li> 
+                <div class="recipe_img_edit">
+                    <img src="${imageUrl}" alt="${post.title} 이미지">
+                    <p>※ 이미지 수정은 현재 지원되지 않습니다.</p>
+                </div>
                         
-											<form id="edit-form" data-post-id="${post.id}">
-                        <dl>
-                          <dt>
-														<input type="text" id="edit-title" value="${post.title}" required>
-													</dt>
-                                
-													<dd>
-														<strong>닉네임:</strong>
-														<input type="text" id="edit-nickname" value="${post.name}">
-													</dd>
-                                
-													<dd>
-														<strong>내용 : </strong>
-														<textarea id="edit-content" required>${post.content}</textarea>
-	   											</dd>
-                        </dl>
+				<form id="edit-form" data-post-id="${post.id}">
+                    <dl>
+                        <dt>
+							<input type="text" id="edit-title" value="${post.title}" required>
+						</dt>                                
+						<dd>
+							<strong>닉네임:</strong>
+							<input type="text" id="edit-nickname" value="${post.name}">
+						</dd>                          
+						<dd>
+							<strong>내용 : </strong>
+							<textarea id="edit-content" required>${post.content}</textarea>
+	   					</dd>
+                    </dl>
                             
-												<div class="modal_buttons">
-                          <button type="submit" class="edit-btn">수정</button>
-													<button type="button" class="delete-btn" data-post-id="${post.id}">삭제</button>
-                        </div>
-                      </form>
+					<div class="modal_buttons">
+                        <button type="submit" class="edit-btn">수정</button>
+					    <button type="button" class="delete-btn" data-post-id="${post.id}">삭제</button>
+                    </div>
+                </form>
                         
-											<a href="#" class="modal_close_pop close_pop">
-												<i class="fa-solid fa-x"></i>
-											</a>
-                    </li>
-                </ul>
+					<a href="#" class="modal_close_pop close_pop">
+						<i class="fa-solid fa-x"></i>
+					</a>
+            </li>
+        </ul>
             `;
 
         $modalContent.html(postHtml);
@@ -242,68 +240,60 @@ $(document).ready(function () {
     $(document).on("submit", "#edit-form", async function (event) {
         event.preventDefault();
 
-        //수정 막기 기능
-        try {
-            throw new Error("임시 삭제 방지");
-        } catch (error) {
-            console.error(error);
-            alert("미안해요.. 비밀번호 기능이 구현될 때까지 잠시 막아두겠습니다.");
-        }
+   
+    	const postId = $(this).data("post-id");
+    	const submitButton = $(this).find("button[type='submit']");
+    	const deleteButton = $(this).find(".delete-btn");
+
+    	// 📌 수정 중에는 모든 버튼 비활성화
+    	submitButton.prop("disabled", true).text("수정 중...");
+    	deleteButton.prop("disabled", true);
+
+    	const updatedPost = {
+    		title: $("#edit-title").val(),
+    		content: $("#edit-content").val(),
+    		name: $("#edit-nickname").val(),
+    	};
+
+    	try {
+    		const { error } = await supabaseClient
+    			.from("Posts")
+    			.update(updatedPost)
+    			.eq("id", postId);
+
+    		if (error) {
+    			alert("게시글 수정에 실패했습니다.");
+    			submitButton.prop("disabled", false).text("수정 완료");
+    			deleteButton.prop("disabled", false);
+    		} else {
+    			alert("게시글이 성공적으로 수정되었습니다.");
+    			closeModal("edit"); // 📌 새로운 모달 닫기 함수 사용
+    			loadPosts();
+    		}
+    	} catch (e) {
+    		console.error("수정 중 오류:", e);
+    		alert("수정 중 오류가 발생했습니다.");
+    		submitButton.prop("disabled", false).text("수정 완료");
+    		deleteButton.prop("disabled", false);
+    	}
     });
 
-    // 	const postId = $(this).data("post-id");
-    // 	const submitButton = $(this).find("button[type='submit']");
-    // 	const deleteButton = $(this).find(".delete-btn");
-
-    // 	// 📌 수정 중에는 모든 버튼 비활성화
-    // 	submitButton.prop("disabled", true).text("수정 중...");
-    // 	deleteButton.prop("disabled", true);
-
-    // 	const updatedPost = {
-    // 		title: $("#edit-title").val(),
-    // 		content: $("#edit-content").val(),
-    // 		name: $("#edit-nickname").val(),
-    // 	};
-
-    // 	try {
-    // 		const { error } = await supabaseClient
-    // 			.from("Posts")
-    // 			.update(updatedPost)
-    // 			.eq("id", postId);
-
-    // 		if (error) {
-    // 			alert("게시글 수정에 실패했습니다.");
-    // 			submitButton.prop("disabled", false).text("수정 완료");
-    // 			deleteButton.prop("disabled", false);
-    // 		} else {
-    // 			alert("게시글이 성공적으로 수정되었습니다.");
-    // 			closeModal("edit"); // 📌 새로운 모달 닫기 함수 사용
-    // 			loadPosts();
-    // 		}
-    // 	} catch (e) {
-    // 		console.error("수정 중 오류:", e);
-    // 		alert("수정 중 오류가 발생했습니다.");
-    // 		submitButton.prop("disabled", false).text("수정 완료");
-    // 		deleteButton.prop("disabled", false);
-    // 	}
-    // });
-
-    // 📌 모달 내 삭제 버튼 클릭 이벤트
-    // $(document).on("click", ".modal_buttons .delete-btn", function () {
-    // 	const postId = $(this).data("post-id");
-    // 	deletePost(postId);
-    // });
-
-    //  비밀번호 만들지못해서 임시 삭제기능 막는 코드
-    $(document).on("click", ".modal_buttons .delete-btn", function (e) {
-        e.preventDefault();
-        try {
-            throw new Error("임시 삭제 방지");
-        } catch (error) {
-            console.error(error);
-            alert("미안해요.. 비밀번호 기능이 구현될 때까지 잠시 막아두겠습니다.");
-        }
+    //📌 모달 내 삭제 버튼 클릭 이벤트
+    $(document).on("click", ".modal_buttons .delete-btn", function () {
+    	const postId = $(this).data("post-id");
+    	deletePost(postId);
     });
+
+    // //  비밀번호 만들지못해서 임시 삭제기능 막는 코드
+    // $(document).on("click", ".modal_buttons .delete-btn", function (e) {
+    //     e.preventDefault();
+    //     try {
+    //         throw new Error("임시 삭제 방지");
+    //     } catch (error) {
+    //         console.error(error);
+    //         alert("미안해요.. 비밀번호 기능이 구현될 때까지 잠시 막아두겠습니다.");
+    //     }
+    // });
 
     // 📌 모달 닫기 이벤트들
     // X 버튼 클릭

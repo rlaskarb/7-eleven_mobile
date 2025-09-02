@@ -68,19 +68,21 @@ $(document).ready(function () {
                     day: "2-digit",
                 });
 
-                // 내용 자르기 (모바일에서는 더 짧게)
+                // 내용 자르기 
                 const truncatedContent =
                     post.content.length > 28 ? post.content.substring(0, 28) + "..." : post.content;
 
                 // 제목 자르기
                 const truncatedTitle = post.title.length > 10 ? post.title.substring(0, 10) + "..." : post.title;
+                
+                const imageUrl = post.filePath || "./sub2/images/content2/ddddd.jpg";
 
                 // 스와이퍼 슬라이드 HTML 구조 생성
                 const slideHtml = `
                     <div class="swiper-slide">
                         <div class="recipe_card">
                             <div class="recipe_img_box">
-                                <img src="${post.filePath}" alt="${post.title}" />
+                                <img src="${imageUrl}" alt="${post.title}" />
                             </div>
                             <div class="recipe_info">
                                 <div class="recipe_title">
