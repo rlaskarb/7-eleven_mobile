@@ -232,7 +232,7 @@ $(document).ready(function () {
                   </dl>
                             
 									<div class="modal_buttons">
-                  	<button type="submit" class="edit-btn">수정 완료</button>
+                  	<button type="submit" class="edit-btn">수정</button>
 										<button type="button" class="delete-btn" data-post-id="${review.id}">삭제</button>
                 	</div>
                 </form>
