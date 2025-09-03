@@ -1,27 +1,39 @@
 $(document).ready(function () {
-    const imageSets = [
-        ["./images/content1/lottecon1.jpg", "./images/content1/lottecon2.jpg", "./images/content1/lottecon3.jpg"],
-        ["./images/content1/lottecon4.jpg", "./images/content1/lottecon5.jpg", "./images/content1/lottecon6.jpg"],
-        ["./images/content1/lottecon7.jpg", "./images/content1/lottecon8.jpg", "./images/content1/lottecon9.jpg"],
-    ];
+	const imageSets = [
+		[
+			"./images/content1/lottecon1.jpg",
+			"./images/content1/lottecon2.jpg",
+			"./images/content1/lottecon4.jpg",
+		],
+		[
+			"./images/content1/lottecon7.jpg",
+			"./images/content1/lottecon8.jpg",
+			"./images/content1/lottecon3.jpg",
+		],
+		[
+			"./images/content1/lottecon5.jpg",
+			"./images/content1/lottecon9.jpg",
+			"./images/content1/lottecon6.jpg",
+		],
+	];
 
-    let currentSetIndex = 0;
+	let currentSetIndex = 0;
 
-    const $imageGroup = $(".cooperative_img img");
+	const $imageGroup = $(".cooperative_img img");
 
-    setInterval(function () {
-        $imageGroup
-            .fadeOut(500)
-            .promise()
-            .done(function () {
-                currentSetIndex = (currentSetIndex + 1) % imageSets.length;
-                const nextImageSet = imageSets[currentSetIndex];
-                $imageGroup.each(function (index, element) {
-                    $(element).attr("src", nextImageSet[index]);
-                });
-                $imageGroup.fadeIn(500);
-            });
-    }, 3000);
+	setInterval(function () {
+		$imageGroup
+			.fadeOut(500)
+			.promise()
+			.done(function () {
+				currentSetIndex = (currentSetIndex + 1) % imageSets.length;
+				const nextImageSet = imageSets[currentSetIndex];
+				$imageGroup.each(function (index, element) {
+					$(element).attr("src", nextImageSet[index]);
+				});
+				$imageGroup.fadeIn(500);
+			});
+	}, 3000);
 });
 
 /*
