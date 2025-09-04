@@ -1,6 +1,6 @@
 .content_area {
     width: 100%;
-    margin: 30px auto;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -10,22 +10,22 @@
 }
 
 .prs_intro_content h3 {
-    font-size: var(--font-size-no6);
-    /*40px*/
+    font-size: 28px;
     color: var(--font-color-main);
     margin-bottom: 20px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .prs_intro_content > p {
     margin-bottom: 60px;
-    line-height: 2rem;
+    line-height: 1.5rem;
 }
 
 .presentation_intro {
-    width: 1200px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     position: relative;
@@ -37,47 +37,65 @@
     height: auto;
     border-radius: 10px;
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
-    border: 2px solid var(--font-color-sub1);
 }
 
 .presentation_intro dt {
-    font-size: var(--font-size-no8);
-    /*26px*/
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 600;
     color: var(--font-color-point2);
     text-align: left;
-    margin-bottom: 15px;
+    margin: 15px;
 }
 
 .presentation_intro dd {
-    line-height: 2.5rem;
+    line-height: 2rem;
     text-align: left;
+    margin: 15px;
+}
+
+.presentation_intro dd span {
+    color: var(--font-color-main);
+    font-weight: 600;
+}
+
+#content .presentation_content::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: 4px;
+    height: 100px;
+    box-shadow: 1px 1px 20px rgba();
+    border-radius: 10px;
+    background: var(--font-color-main);
 }
 
 /* 설명회 안내 섹션 */
 .presentation_content {
-    width: 1000px;
+    width: 100%;
     margin: 0 auto;
-    border-top: 2px solid var(--font-color-main);
     padding-top: 100px;
+    position: relative;
 }
 
 .presentation_content h3 {
-    font-size: var(--font-size-no6);
-    /*40px*/
+    font-size: 28px;
     color: var(--font-color-main);
     margin-bottom: 20px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .presentation_content > p {
     color: #333;
     margin-bottom: 50px;
-    line-height: 1.8rem;
+    line-height: 1.5rem;
 }
 
 /* 지역 버튼들 */
 .presentation {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -86,8 +104,8 @@
 }
 
 .presentation li {
-    width: 200px;
-    height: 120px;
+    width: 30%;
+    height: 100px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -95,16 +113,13 @@
     align-items: center;
     border: 2px solid var(--font-color-point2);
     background-color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
     position: relative;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .presentation li a {
-    font-size: var(--font-size-no10);
-    /*22px*/
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 700;
     text-align: center;
 }
 
@@ -112,40 +127,22 @@
 .presentation li::after {
     content: "자세히 보기";
     position: absolute;
-    bottom: 12px;
-    font-size: 0.8rem;
+    bottom: 10px;
+    font-size: 14px;
     color: #666;
-    transition: all 0.3s ease;
     opacity: 0.8;
-}
-
-/* 호버 효과 */
-.presentation li:hover {
-    transform: translateY(-5px);
-    border-color: var(--font-color-main);
-    background-color: var(--font-color-sub2);
-}
-
-.presentation li:hover::after {
-    color: var(--font-color-main);
-    opacity: 1;
-}
-
-.presentation li:hover a {
-    color: var(--font-color-main);
 }
 
 /* 팝업 모달 */
 .pre_modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 200;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(2px);
 }
 
 .per_modal_content {
@@ -153,34 +150,29 @@
     margin: 5% auto;
     border-radius: 10px;
     width: 90%;
-    max-width: 900px;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5);
 }
 
 .pre_modal #pre_modal_title {
-    font-size: var(--font-size-no9);
-    /*24px*/
-    background: rgba(247, 38, 41, 0.9);
+    font-size: 20px;
+    background: var(--font-color-main);
     border-radius: 10px;
     color: #fff;
     padding: 15px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .close {
     position: absolute;
     right: 25px;
-    top: 10px;
-    font-size: var(--font-size-no7);
-    /*30px*/
+    top: 5px;
+    font-size: 30px;
     font-weight: bold;
     color: #fff;
-    cursor: pointer;
 }
 
 .table_wrapper {
@@ -192,7 +184,7 @@
 /* 테이블 스타일 */
 .presentation_table {
     width: 100%;
-    min-height: 250px;
+    min-height: 200px;
     border-collapse: collapse;
     background-color: #fff;
 }
@@ -207,7 +199,7 @@
 .presentation_table th {
     background-color: var(--font-color-point2);
     color: #fff;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     font-weight: bold;
     border-radius: 10px;
@@ -225,14 +217,14 @@
 .datetime {
     font-weight: 600;
     color: var(--font-color-main);
-    width: 25%;
+    width: 20%;
     text-align: center;
 }
 
 .place {
-    font-size: var(--font-size-no13);
+    font-size: 16px;
     font-weight: 600;
-    width: 25%;
+    width: 35%;
     text-align: center;
 }
 
@@ -244,7 +236,7 @@
 }
 
 .phone {
-    width: 15%;
+    width: 10%;
     text-align: center;
 }
 
@@ -253,15 +245,19 @@
     background: var(--font-color-point1);
     color: #fff;
     border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    white-space: nowrap;
+    padding: 5px 7px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.phone_btn:hover {
-    transform: translateY(-3px);
+#content .anim_target {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+#content .anim_target.active {
+    opacity: 1;
+    transform: translateY(0);
 }
